@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Construction | Building the Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --bg-slate: #0F172A;
+            --bg-card: rgba(15, 23, 42, 0.6);
+            --gold: #F59E0B;
+            --orange: #FB923C;
+            --emerald: #10B981;
+            --blue: #3B82F6;
+            --purple: #8B5CF6;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-glow: rgba(245, 158, 11, 0.3);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        /* Grid Background */
+        .grid-bg {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Animated Gradient Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float-1 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+            bottom: -100px;
+            left: -200px;
+            animation: float-2 25s ease-in-out infinite;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--emerald) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            animation: float-3 18s ease-in-out infinite;
+        }
+
+        @keyframes float-1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-50px, 80px) scale(1.1); }
+            66% { transform: translate(30px, -40px) scale(0.95); }
+        }
+
+        @keyframes float-2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(60px, -50px) scale(1.05); }
+            66% { transform: translate(-40px, 30px) scale(0.9); }
+        }
+
+        @keyframes float-3 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-40%, -60%) scale(1.2); }
+        }
+
+        /* Glassmorphism Base */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .glass-glow {
+            box-shadow: 
+                0 0 30px rgba(245, 158, 11, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(2, 6, 23, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--orange));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            color: var(--bg-deep);
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--orange), var(--gold));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif;
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            background: rgba(245, 158, 11, 0.1);
+            box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), var(--orange));
+            border-radius: 3px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5));
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0; transform: translateX(-20px); }
+            50% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(0); }
+        }
+
+        /* Floating Cards */
+        .float-card {
+            animation: float-card 6s ease-in-out infinite;
+        }
+
+        .float-card:nth-child(1) { animation-delay: 0s; }
+        .float-card:nth-child(2) { animation-delay: -2s; }
+        .float-card:nth-child(3) { animation-delay: -4s; }
+
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+        }
+
+        /* Card Tilt Effect */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        /* Star Rating */
+        .star {
+            color: var(--gold);
+            filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
+        }
+
+        /* Live Indicator */
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--emerald);
+            border-radius: 50%;
+            animation: pulse-live 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-live {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+        }
+
+        /* Section Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Counter Animation */
+        .counter {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Service Cards */
+        .service-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(245, 158, 11, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(245, 158, 11, 0.1);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 146, 60, 0.1));
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--gold), var(--orange));
+            transform: scale(1.1);
+        }
+
+        .service-card:hover .service-icon svg {
+            stroke: var(--bg-deep);
+        }
+
+        /* Project Cards */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 0%, transparent 60%);
+            opacity: 0.8;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-content {
+            transform: translateY(0);
+        }
+
+        /* Testimonial Slider */
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--orange), var(--emerald));
+            z-index: 1001;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        /* Form Inputs */
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(245, 158, 11, 0.05);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid transparent;
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Particle Canvas */
+        #particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(2, 6, 23, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-stats {
+                position: relative !important;
+                flex-direction: row !important;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 3rem;
+            }
+
+            .stat-card {
+                width: calc(50% - 0.5rem) !important;
+                min-width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stat-card {
+                width: 100% !important;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Glow Text */
+        .glow-text {
+            background: linear-gradient(135deg, var(--gold), var(--orange), var(--gold));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Checkmark Animation */
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-effect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-effect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* CTA Gradient */
+        .cta-gradient {
+            background: linear-gradient(135deg, 
+                rgba(245, 158, 11, 0.2) 0%, 
+                rgba(59, 130, 246, 0.2) 50%, 
+                rgba(16, 185, 129, 0.2) 100%);
+            background-size: 200% 200%;
+            animation: gradient-move 8s ease infinite;
+        }
+
+        @keyframes gradient-move {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="grid-bg"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <canvas id="particles"></canvas>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-900">
+                        <path d="M3 21h18"/>
+                        <path d="M5 21V7l8-4v18"/>
+                        <path d="M19 21V11l-6-4"/>
+                        <path d="M9 9v.01"/>
+                        <path d="M9 12v.01"/>
+                        <path d="M9 15v.01"/>
+                        <path d="M9 18v.01"/>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold font-['Space_Grotesk']">Apex Construction</span>
+            </a>
+
+            <div class="nav-links hidden md:flex items-center gap-8">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button class="btn-primary" onclick="openModal()">
+                    <span>Get Quote</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"/>
+                        <path d="m12 5 7 7-7 7"/>
+                    </svg>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services" class="nav-link" onclick="closeMobileMenu()">Services</a>
+        <a href="#projects" class="nav-link" onclick="closeMobileMenu()">Projects</a>
+        <a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a>
+        <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
+        <button class="btn-primary mt-4" onclick="openModal(); closeMobileMenu();">
+            <span>Get Quote</span>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen relative flex items-center pt-24 pb-16 px-4" id="hero">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass glass-glow mb-6">
+                        <div class="live-dot"></div>
+                        <span class="text-sm font-medium text-amber-400">Now Accepting New Projects</span>
+                    </div>
+
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                        Building the Future<br>
+                        <span class="glow-text">With Precision</span>
+                    </h1>
+
+                    <p class="text-xl text-slate-400 mb-8 max-w-xl">
+                        Modern construction solutions for homes, offices, and commercial projects. 
+                        We transform visions into reality with cutting-edge technology and expert craftsmanship.
+                    </p>
+
+                    <!-- Bullet Points -->
+                    <div class="flex flex-wrap gap-4 mb-10">
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium">Licensed & Insured</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium">10+ Years Experience</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium">98% Satisfaction</span>
+                        </div>
+                        <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
+                            <div class="check-icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"/>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-medium">Fast Completion</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-buttons flex flex-wrap gap-4">
+                        <button class="btn-primary text-lg" onclick="openModal()">
+                            <span>Get Free Quote</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                        </button>
+                        <a href="#projects" class="btn-secondary text-lg">
+                            <span>View Projects</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m7 15 5 5 5-5"/>
+                                <path d="m7 9 5-5 5 5"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Floating Stats Cards -->
+                <div class="hero-stats relative lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-4">
+                    <!-- Card 1: Project Complete -->
+                    <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-sm text-slate-400 uppercase tracking-wider">Project Complete</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400">Done</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Modern Villa</h3>
+                        <div class="progress-bar mb-2">
+                            <div class="progress-fill" data-width="100" style="width: 0%"></div>
+                        </div>
+                        <span class="text-sm text-slate-400">Completed on time</span>
+                    </div>
+
+                    <!-- Card 2: Client Satisfaction -->
+                    <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
+                        <div class="text-center">
+                            <span class="text-6xl font-bold glow-text counter" data-target="98">0</span>
+                            <span class="text-4xl font-bold glow-text">%</span>
+                            <p class="text-slate-400 mt-2">Client Satisfaction Rate</p>
+                            <div class="flex justify-center gap-1 mt-3">
+                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Active Projects -->
+                    <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="live-dot"></div>
+                            <span class="text-sm text-emerald-400 font-medium">Active Projects</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Downtown Office Complex</span>
+                                    <span class="text-amber-400 font-bold">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="75" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-medium">Riverside Homes</span>
+                                    <span class="text-amber-400 font-bold">40%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" data-width="40" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-24 px-4 relative z-10" id="services">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Our Services</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">What We Do Best</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+                    From residential dream homes to large commercial complexes, we deliver excellence in every project.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Service Cards -->
+                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.1s">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9 22 9 12 15 12 15 22"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Residential Construction</h3>
+                    <p class="text-slate-400">Custom homes built with precision and care, from modern minimalist to classic designs.</p>
+                </div>
+
+                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.2s">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                            <path d="M9 22v-4h6v4"/>
+                            <path d="M8 6h.01"/>
+                            <path d="M16 6h.01"/>
+                            <path d="M12 6h.01"/>
+                            <path d="M12 10h.01"/>
+                            <path d="M12 14h.01"/>
+                            <path d="M16 10h.01"/>
+                            <path d="M16 14h.01"/>
+                            <path d="M8 10h.01"/>
+                            <path d="M8 14h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Commercial Construction</h3>
+                    <p class="text-slate-400">Office buildings, retail spaces, and industrial facilities designed for success.</p>
+                </div>
+
+                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.3s">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Renovations</h3>
+                    <p class="text-slate-400">Transform your existing space with our expert renovation and remodeling services.</p>
+                </div>
+
+                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.4s">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Interior Remodeling</h3>
+                    <p class="text-slate-400">Stunning interior transformations that elevate your living and working spaces.</p>
+                </div>
+
+                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.5s">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="m2 17 10 5 10-5"/>
+                            <path d="m2 12 10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Custom Homes</h3>
+                    <p class="text-slate-400">Bespoke architectural masterpieces tailored to your unique vision and lifestyle.</p>
+                </div>
+
+                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.6s">
+                    <div class="service-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Project Management</h3>
+                    <p class="text-slate-400">End-to-end project oversight ensuring timely delivery and budget compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-24 px-4 relative z-10" id="projects">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Portfolio</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+                    Explore our latest construction achievements and see the quality we deliver.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project Cards -->
+                <div class="project-card h-80 reveal" onclick="openProjectModal(0)">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop" alt="Modern Villa">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-amber-400 mb-2">Residential</span>
+                        <h3 class="text-xl font-bold">Modern Villa</h3>
+                        <p class="text-slate-400 text-sm mt-1">Luxury waterfront property</p>
+                    </div>
+                </div>
+
+                <div class="project-card h-80 reveal" onclick="openProjectModal(1)">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Downtown Office">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-blue-400 mb-2">Commercial</span>
+                        <h3 class="text-xl font-bold">Downtown Office Complex</h3>
+                        <p class="text-slate-400 text-sm mt-1">12-story corporate building</p>
+                    </div>
+                </div>
+
+                <div class="project-card h-80 reveal" onclick="openProjectModal(2)">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Riverside Homes">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-emerald-400 mb-2">Residential</span>
+                        <h3 class="text-xl font-bold">Riverside Homes</h3>
+                        <p class="text-slate-400 text-sm mt-1">Multi-unit development</p>
+                    </div>
+                </div>
+
+                <div class="project-card h-80 lg:col-span-2 reveal" onclick="openProjectModal(3)">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=400&fit=crop" alt="Luxury Apartments">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-amber-400 mb-2">Commercial</span>
+                        <h3 class="text-xl font-bold">Skyline Luxury Apartments</h3>
+                        <p class="text-slate-400 text-sm mt-1">High-rise residential tower with panoramic views</p>
+                    </div>
+                </div>
+
+                <div class="project-card h-80 reveal" onclick="openProjectModal(4)">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Modern Renovation">
+                    <div class="project-overlay"></div>
+                    <div class="project-content">
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-purple-400 mb-2">Renovation</span>
+                        <h3 class="text-xl font-bold">Heritage Restoration</h3>
+                        <p class="text-slate-400 text-sm mt-1">Historic building modernization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 px-4 relative z-10" id="about">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Why Choose Us</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Built on Excellence</h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+                    Our track record speaks for itself. Here's what sets Apex Construction apart.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.1s">
+                    <div class="text-5xl font-bold glow-text mb-2">
+                        <span class="counter" data-target="500">0</span>+
+                    </div>
+                    <p class="text-slate-400">Projects Completed</p>
+                </div>
+
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.2s">
+                    <div class="text-5xl font-bold glow-text mb-2">
+                        <span class="counter" data-target="10">0</span>+
+                    </div>
+                    <p class="text-slate-400">Years Experience</p>
+                </div>
+
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.3s">
+                    <div class="text-5xl font-bold glow-text mb-2">
+                        <span class="counter" data-target="98">0</span>%
+                    </div>
+                    <p class="text-slate-400">Satisfaction Rate</p>
+                </div>
+
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.4s">
+                    <div class="text-5xl font-bold glow-text mb-2">24/7</div>
+                    <p class="text-slate-400">Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-4 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Testimonials</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
+            </div>
+
+            <div class="relative">
+                <div class="overflow-hidden">
+                    <div class="testimonial-track flex gap-6" id="testimonialTrack">
+                        <!-- Testimonial Cards -->
+                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="text-slate-300 mb-6">"Apex Construction exceeded all our expectations. Our dream home became a reality, and the process was seamless from start to finish."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold">JM</div>
+                                <div>
+                                    <p class="font-bold">James Mitchell</p>
+                                    <p class="text-sm text-slate-400">Homeowner</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="text-slate-300 mb-6">"Professional, reliable, and incredibly skilled. Our office complex was completed ahead of schedule and under budget. Highly recommend!"</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold">SC</div>
+                                <div>
+                                    <p class="font-bold">Sarah Chen</p>
+                                    <p class="text-sm text-slate-400">Business Owner</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="text-slate-300 mb-6">"The renovation of our heritage building was handled with utmost care. Apex preserved the character while adding modern amenities."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold">RK</div>
+                                <div>
+                                    <p class="font-bold">Robert Kim</p>
+                                    <p class="text-sm text-slate-400">Property Developer</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
+                            <div class="flex gap-1 mb-4">
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <p class="text-slate-300 mb-6">"From design to completion, Apex delivered exceptional quality. Their attention to detail and communication was outstanding."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold">EW</div>
+                                <div>
+                                    <p class="font-bold">Emily Watson</p>
+                                    <p class="text-sm text-slate-400">Homeowner</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Dots -->
+                <div class="flex justify-center gap-3 mt-8">
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-amber-500 transition-all" data-index="0"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-slate-600 hover:bg-slate-500 transition-all" data-index="1"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-slate-600 hover:bg-slate-500 transition-all" data-index="2"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-slate-600 hover:bg-slate-500 transition-all" data-index="3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 px-4 relative z-10" id="contact">
+        <div class="max-w-4xl mx-auto">
+            <div class="cta-gradient glass glass-glow p-12 md:p-16 text-center rounded-3xl reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Start Your Project?</h2>
+                <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+                    Let's bring your vision to life. Get a free consultation and detailed quote from our expert team.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="btn-primary text-lg" onclick="openModal()">
+                        <span>Get Free Quote</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/>
+                            <path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <a href="tel:+1234567890" class="btn-secondary text-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <span>Call Us Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-slate-800 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-900">
+                                <path d="M3 21h18"/>
+                                <path d="M5 21V7l8-4v18"/>
+                                <path d="M19 21V11l-6-4"/>
+                            </svg>
+                        </div>
+                        <span class="text-lg font-bold font-['Space_Grotesk']">Apex Construction</span>
+                    </div>
+                    <p class="text-slate-400 text-sm">Building the future with precision and excellence.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Residential</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Commercial</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Renovations</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Custom Homes</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Our Team</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li>123 Construction Ave</li>
+                        <li>New York, NY 10001</li>
+                        <li>info@apexconstruction.com</li>
+                        <li>(555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800">
+                <p class="text-sm text-slate-400">2024 Apex Construction. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-amber-500/20 transition-colors" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-amber-500/20 transition-colors" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-amber-500/20 transition-colors" aria-label="LinkedIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quote Modal -->
+    <div class="modal" id="quoteModal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content glass glass-glow p-8 md:p-10">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+
+            <div class="text-center mb-8">
+                <h3 class="text-2xl md:text-3xl font-bold mb-2">Get Your Free Quote</h3>
+                <p class="text-slate-400">Fill out the form below and we'll get back to you within 24 hours.</p>
+            </div>
+
+            <form id="quoteForm" class="space-y-5">
+                <div>
+                    <label class="form-label" for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="John Smith" required>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-5">
+                    <div>
+                        <label class="form-label" for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    <div>
+                        <label class="form-label" for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="form-label" for="projectType">Project Type</label>
+                    <select id="projectType" name="projectType" class="form-input" required>
+                        <option value="">Select project type...</option>
+                        <option value="Residential">Residential Construction</option>
+                        <option value="Commercial">Commercial Construction</option>
+                        <option value="Renovation">Renovation</option>
+                        <option value="Custom Home">Custom Home</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label" for="budget">Budget Range</label>
+                    <select id="budget" name="budget" class="form-input" required>
+                        <option value="">Select budget range...</option>
+                        <option value="Under $10k">Under $10,000</option>
+                        <option value="$10k - $50k">$10,000 - $50,000</option>
+                        <option value="$50k - $200k">$50,000 - $200,000</option>
+                        <option value="$200k+">$200,000+</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label" for="description">Project Description</label>
+                    <textarea id="description" name="description" rows="4" class="form-input resize-none" placeholder="Tell us about your project..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary w-full justify-center text-lg py-4" id="submitBtn">
+                    <span id="submitText">Submit Request</span>
+                    <span id="submitSpinner" class="spinner hidden"></span>
+                </button>
+            </form>
+
+            <div id="successMessage" class="hidden text-center py-8">
+                <div class="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+                <h4 class="text-2xl font-bold mb-2">Request Submitted!</h4>
+                <p class="text-slate-400">We'll contact you within 24 hours with your personalized quote.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-backdrop" onclick="closeProjectModal()"></div>
+        <div class="modal-content glass glass-glow p-0 overflow-hidden max-w-4xl">
+            <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Close modal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <div id="projectModalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Project Data
+        const projects = [
+            {
+                title: "Modern Villa",
+                type: "Residential",
+                image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=600&fit=crop",
+                description: "A stunning contemporary villa featuring floor-to-ceiling windows, open floor plans, and sustainable building materials. This luxury waterfront property spans 6,500 sq ft with panoramic ocean views.",
+                stats: { area: "6,500 sq ft", completion: "2023", budget: "$2.8M" },
+                timeline: [
+                    { phase: "Planning", duration: "2 months" },
+                    { phase: "Foundation", duration: "3 months" },
+                    { phase: "Construction", duration: "8 months" },
+                    { phase: "Finishing", duration: "3 months" }
+                ]
+            },
+            {
+                title: "Downtown Office Complex",
+                type: "Commercial",
+                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop",
+                description: "A 12-story corporate headquarters designed for modern businesses. Features include smart building technology, energy-efficient systems, and flexible office spaces.",
+                stats: { area: "85,000 sq ft", completion: "2024", budget: "$12M" },
+                timeline: [
+                    { phase: "Planning", duration: "4 months" },
+                    { phase: "Foundation", duration: "6 months" },
+                    { phase: "Construction", duration: "14 months" },
+                    { phase: "Finishing", duration: "4 months" }
+                ]
+            },
+            {
+                title: "Riverside Homes",
+                type: "Residential",
+                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=600&fit=crop",
+                description: "A multi-unit residential development featuring 24 luxury townhomes along the riverfront. Each unit includes private garages, rooftop terraces, and smart home integration.",
+                stats: { area: "48,000 sq ft", completion: "2024", budget: "$8.5M" },
+                timeline: [
+                    { phase: "Planning", duration: "3 months" },
+                    { phase: "Foundation", duration: "4 months" },
+                    { phase: "Construction", duration: "10 months" },
+                    { phase: "Finishing", duration: "3 months" }
+                ]
+            },
+            {
+                title: "Skyline Luxury Apartments",
+                type: "Commercial",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=600&fit=crop",
+                description: "A 22-story high-rise residential tower featuring 180 luxury apartments with panoramic city views. Amenities include a rooftop pool, fitness center, and concierge services.",
+                stats: { area: "220,000 sq ft", completion: "2025", budget: "$35M" },
+                timeline: [
+                    { phase: "Planning", duration: "6 months" },
+                    { phase: "Foundation", duration: "8 months" },
+                    { phase: "Construction", duration: "20 months" },
+                    { phase: "Finishing", duration: "6 months" }
+                ]
+            },
+            {
+                title: "Heritage Restoration",
+                type: "Renovation",
+                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=600&fit=crop",
+                description: "Complete restoration of a 1920s heritage building, preserving historical architectural elements while modernizing interiors with contemporary amenities and sustainable systems.",
+                stats: { area: "15,000 sq ft", completion: "2023", budget: "$4.2M" },
+                timeline: [
+                    { phase: "Assessment", duration: "2 months" },
+                    { phase: "Restoration", duration: "8 months" },
+                    { phase: "Modernization", duration: "4 months" },
+                    { phase: "Finishing", duration: "2 months" }
+                ]
+            }
+        ];
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            initScrollProgress();
+            initNavbar();
+            initRevealAnimations();
+            initCounters();
+            initProgressBars();
+            initTestimonials();
+            initTiltCards();
+            initMobileMenu();
+            initFormSubmission();
+        });
+
+        // Particle System
+        function initParticles() {
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            
+            let particles = [];
+            let animationId = null;
+            
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            resize();
+            window.addEventListener('resize', resize);
+            
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+                
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                        this.reset();
+                    }
+                }
+                
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, Math.max(0.1, this.size), 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+            
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw();
+                });
+                
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            // Respect reduced motion
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                animate();
+            }
+        }
+
+        // Scroll Progress
+        function initScrollProgress() {
+            const progressBar = document.getElementById('scrollProgress');
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = scrollTop / docHeight;
+                progressBar.style.transform = `scaleX(${progress})`;
+            });
+        }
+
+        // Navbar
+        function initNavbar() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Reveal Animations
+        function initRevealAnimations() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            
+            reveals.forEach(el => observer.observe(el));
+        }
+
+        // Counter Animation
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.dataset.target);
+                        const duration = 2000;
+                        const start = performance.now();
+                        
+                        function updateCounter(currentTime) {
+                            const elapsed = currentTime - start;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const easeOut = 1 - Math.pow(1 - progress, 3);
+                            const current = Math.floor(easeOut * target);
+                            
+                            counter.textContent = current;
+                            
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target;
+                            }
+                        }
+                        
+                        requestAnimationFrame(updateCounter);
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Progress Bars
+        function initProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const width = bar.dataset.width;
+                        setTimeout(() => {
+                            bar.style.width = width + '%';
+                        }, 300);
+                        observer.unobserve(bar);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            progressBars.forEach(bar => observer.observe(bar));
+        }
+
+        // Testimonials
+        function initTestimonials() {
+            const track = document.getElementById('testimonialTrack');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            let currentIndex = 0;
+            const cardWidth = 424; // min-width + gap
+            let autoplayInterval = null;
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                track.style.transform = `translateX(-${index * cardWidth}px)`;
+                
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-amber-500', i === index);
+                    dot.classList.toggle('bg-slate-600', i !== index);
+                });
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => goToSlide(index));
+            });
+            
+            function startAutoplay() {
+                autoplayInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % dots.length;
+                    goToSlide(currentIndex);
+                }, 5000);
+            }
+            
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    clearInterval(autoplayInterval);
+                }
+            }
+            
+            // Start autoplay if not reduced motion
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                startAutoplay();
+            }
+            
+            // Pause on hover
+            track.addEventListener('mouseenter', stopAutoplay);
+            track.addEventListener('mouseleave', startAutoplay);
+        }
+
+        // Tilt Cards
+        function initTiltCards() {
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+        }
+
+        // Mobile Menu
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            });
+        }
+        
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Quote Modal
+        function openModal() {
+            document.getElementById('quoteModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.getElementById('quoteModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Project Modal
+        function openProjectModal(index) {
+            const project = projects[index];
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('projectModalContent');
+            
+            content.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover">
+                <div class="p-8">
+                    <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-amber-400 mb-4">${project.type}</span>
+                    <h3 class="text-3xl font-bold mb-4">${project.title}</h3>
+                    <p class="text-slate-400 mb-8">${project.description}</p>
+                    
+                    <div class="grid grid-cols-3 gap-4 mb-8">
+                        <div class="glass p-4 rounded-xl text-center">
+                            <p class="text-2xl font-bold glow-text">${project.stats.area}</p>
+                            <p class="text-xs text-slate-400 mt-1">Total Area</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl text-center">
+                            <p class="text-2xl font-bold glow-text">${project.stats.completion}</p>
+                            <p class="text-xs text-slate-400 mt-1">Completion</p>
+                        </div>
+                        <div class="glass p-4 rounded-xl text-center">
+                            <p class="text-2xl font-bold glow-text">${project.stats.budget}</p>
+                            <p class="text-xs text-slate-400 mt-1">Budget</p>
+                        </div>
+                    </div>
+                    
+                    <h4 class="font-bold mb-4">Project Timeline</h4>
+                    <div class="grid grid-cols-4 gap-2">
+                        ${project.timeline.map((item, i) => `
+                            <div class="glass p-4 rounded-xl text-center">
+                                <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-2 text-amber-400 font-bold text-sm">${i + 1}</div>
+                                <p class="font-medium text-sm">${item.phase}</p>
+                                <p class="text-xs text-slate-400">${item.duration}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Form Submission
+        function initFormSubmission() {
+            const form = document.getElementById('quoteForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const submitSpinner = document.getElementById('submitSpinner');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                submitText.classList.add('hidden');
+                submitSpinner.classList.remove('hidden');
+                submitBtn.disabled = true;
+                
+                // Collect form data
+                const formData = {
+                    name: form.name.value,
+                    email: form.email.value,
+                    phone: form.phone.value,
+                    projectType: form.projectType.value,
+                    budget: form.budget.value,
+                    description: form.description.value
+                };
+                
+                // Simulate sending (in production, use EmailJS or backend)
+                try {
+                    // For demo, we'll simulate a delay
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    // Log the email data that would be sent
+                    console.log('Email would be sent to: oliver.h.business99@gmail.com');
+                    console.log('Form Data:', formData);
+                    
+                    // Show success message
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    
+                    // Reset form after delay
+                    setTimeout(() => {
+                        form.reset();
+                        form.classList.remove('hidden');
+                        successMessage.classList.add('hidden');
+                        submitText.classList.remove('hidden');
+                        submitSpinner.classList.add('hidden');
+                        submitBtn.disabled = false;
+                        closeModal();
+                    }, 3000);
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    submitText.classList.remove('hidden');
+                    submitSpinner.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    alert('There was an error submitting your request. Please try again.');
+                }
+            });
+        }
+
+        // Close modals on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeProjectModal();
+                closeMobileMenu();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
