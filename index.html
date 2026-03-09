@@ -24,16 +24,8 @@
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Manrope', sans-serif;
             background: var(--bg-deep);
@@ -48,73 +40,25 @@
             line-height: 1.1;
         }
 
-        /* Grid Background */
+        /* Background & Effects */
         .grid-bg {
-            position: fixed;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
+            position: fixed; inset: 0;
+            background-image: linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
+            pointer-events: none; z-index: 0;
         }
-
-        /* Animated Gradient Orbs */
         .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 0;
+            position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none; z-index: 0;
         }
+        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); top: -200px; right: -200px; animation: float-1 20s ease-in-out infinite; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #333 0%, transparent 70%); bottom: -100px; left: -200px; animation: float-2 25s ease-in-out infinite; }
+        .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%); top: 50%; left: 50%; animation: float-3 18s ease-in-out infinite; }
 
-        .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-            top: -200px;
-            right: -200px;
-            animation: float-1 20s ease-in-out infinite;
-        }
+        @keyframes float-1 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-50px, 80px) scale(1.1); } 66% { transform: translate(30px, -40px) scale(0.95); } }
+        @keyframes float-2 { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(60px, -50px) scale(1.05); } 66% { transform: translate(-40px, 30px) scale(0.9); } }
+        @keyframes float-3 { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-40%, -60%) scale(1.2); } }
 
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, #333 0%, transparent 70%);
-            bottom: -100px;
-            left: -200px;
-            animation: float-2 25s ease-in-out infinite;
-        }
-
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            animation: float-3 18s ease-in-out infinite;
-        }
-
-        @keyframes float-1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(-50px, 80px) scale(1.1); }
-            66% { transform: translate(30px, -40px) scale(0.95); }
-        }
-
-        @keyframes float-2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(60px, -50px) scale(1.05); }
-            66% { transform: translate(-40px, 30px) scale(0.9); }
-        }
-
-        @keyframes float-3 {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-40%, -60%) scale(1.2); }
-        }
-
-        /* Glassmorphism Base */
+        /* Glass & Cards */
         .glass {
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
@@ -122,578 +66,135 @@
             border: 1px solid var(--glass-border);
             border-radius: 16px;
         }
-
-        .glass-glow {
-            box-shadow: 
-                0 0 30px rgba(220, 38, 38, 0.05),
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        }
+        .glass-glow { box-shadow: 0 0 30px rgba(220, 38, 38, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05); }
 
         /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .navbar.scrolled {
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .nav-link {
-            position: relative;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1rem 2rem; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .navbar.scrolled { background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+        .nav-link { position: relative; color: var(--text-secondary); text-decoration: none; font-weight: 500; padding: 0.5rem 0; transition: color 0.3s ease; }
+        .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); transition: width 0.3s ease; }
+        .nav-link:hover { color: var(--text-primary); }
+        .nav-link:hover::after { width: 100%; }
 
         /* Buttons */
         .btn-primary {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 2rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
-            font-weight: 600;
-            font-family: 'Space Grotesk', sans-serif;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            position: relative; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light)); color: white; font-weight: 600;
+            font-family: 'Space Grotesk', sans-serif; border: none; border-radius: 12px; cursor: pointer;
+            overflow: hidden; transition: all 0.3s ease; text-decoration: none;
         }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--accent-light), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
-        }
-
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
+        .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, var(--accent-light), var(--accent)); opacity: 0; transition: opacity 0.3s ease; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4); }
+        .btn-primary:hover::before { opacity: 1; }
+        .btn-primary span { position: relative; z-index: 1; }
+        
         .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 2rem;
-            background: transparent;
-            color: var(--text-primary);
-            font-weight: 600;
-            font-family: 'Space Grotesk', sans-serif;
-            border: 2px solid var(--glass-border);
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.875rem 2rem; background: transparent;
+            color: var(--text-primary); font-weight: 600; font-family: 'Space Grotesk', sans-serif;
+            border: 2px solid var(--glass-border); border-radius: 12px; cursor: pointer;
+            transition: all 0.3s ease; text-decoration: none;
         }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            background: rgba(220, 38, 38, 0.1);
-            box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
-        }
+        .btn-secondary:hover { border-color: var(--accent); background: rgba(220, 38, 38, 0.1); box-shadow: 0 0 30px rgba(220, 38, 38, 0.2); }
 
         /* Progress Bar */
-        .progress-bar {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
-        }
+        .progress-bar { height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-light)); border-radius: 3px; transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+        .progress-fill::after { content: ''; position: absolute; right: 0; top: 0; bottom: 0; width: 20px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5)); animation: shimmer 2s infinite; }
+        @keyframes shimmer { 0% { opacity: 0; transform: translateX(-20px); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateX(0); } }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            border-radius: 3px;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            width: 20px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5));
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { opacity: 0; transform: translateX(-20px); }
-            50% { opacity: 1; }
-            100% { opacity: 0; transform: translateX(0); }
-        }
-
-        /* Floating Cards */
-        .float-card {
-            animation: float-card 6s ease-in-out infinite;
-        }
-
+        /* Animations */
+        .float-card { animation: float-card 6s ease-in-out infinite; }
         .float-card:nth-child(1) { animation-delay: 0s; }
         .float-card:nth-child(2) { animation-delay: -2s; }
         .float-card:nth-child(3) { animation-delay: -4s; }
+        @keyframes float-card { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
+        .tilt-card { transform-style: preserve-3d; transition: transform 0.3s ease; }
+        .star { color: var(--accent); filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.5)); }
+        .live-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse-live 2s ease-in-out infinite; }
+        @keyframes pulse-live { 0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); } 50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); } }
 
-        @keyframes float-card {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-
-        /* Card Tilt Effect */
-        .tilt-card {
-            transform-style: preserve-3d;
-            transition: transform 0.3s ease;
-        }
-
-        /* Star Rating */
-        .star {
-            color: var(--accent);
-            filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.5));
-        }
-
-        /* Live Indicator */
-        .live-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse-live 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-live {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
-            50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
-        }
-
-        /* Section Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Counter Animation */
-        .counter {
-            font-variant-numeric: tabular-nums;
-        }
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .counter { font-variant-numeric: tabular-nums; }
 
         /* Service Cards */
-        .service-card {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(220, 38, 38, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(220, 38, 38, 0.1);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
+        .service-card { position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .service-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent); opacity: 0; transition: opacity 0.4s ease; }
+        .service-card:hover { transform: translateY(-8px); border-color: rgba(220, 38, 38, 0.3); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(220, 38, 38, 0.1); }
+        .service-card:hover::before { opacity: 1; }
         .service-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(239, 68, 68, 0.1));
-            border-radius: 16px;
-            margin-bottom: 1.5rem;
-            transition: all 0.4s ease;
+            border-radius: 16px; margin-bottom: 1.5rem; transition: all 0.4s ease;
         }
-
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            transform: scale(1.1);
-        }
-
-        .service-card:hover .service-icon svg {
-            stroke: white;
-        }
+        .service-card:hover .service-icon { background: linear-gradient(135deg, var(--accent), var(--accent-light)); transform: scale(1.1); }
+        .service-card:hover .service-icon svg { stroke: white; }
 
         /* Project Cards */
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .project-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 60%);
-            opacity: 0.8;
-            transition: opacity 0.4s ease;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem;
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover .project-content {
-            transform: translateY(0);
-        }
+        .project-card { position: relative; overflow: hidden; border-radius: 20px; cursor: pointer; }
+        .project-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .project-card:hover img { transform: scale(1.1); }
+        .project-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 60%); opacity: 0.8; transition: opacity 0.4s ease; }
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; transform: translateY(20px); transition: transform 0.4s ease; }
+        .project-card:hover .project-content { transform: translateY(0); }
 
         /* Scroll Progress */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--blue));
-            z-index: 1001;
-            transform-origin: left;
-            transform: scaleX(0);
-        }
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--blue)); z-index: 1001; transform-origin: left; transform: scaleX(0); }
 
-        /* Modal */
-        .modal {
-            position: fixed;
-            inset: 0;
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-        }
+        /* Modals */
+        .modal { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
+        .modal.active { opacity: 1; visibility: visible; }
+        .modal-backdrop { position: absolute; inset: 0; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); }
+        .modal-content { position: relative; width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: scale(0.9) translateY(20px); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .modal.active .modal-content { transform: scale(1) translateY(0); }
+        
+        /* Forms */
+        .form-input { width: 100%; padding: 1rem 1.25rem; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); border-radius: 12px; color: var(--text-primary); font-family: 'Manrope', sans-serif; font-size: 1rem; transition: all 0.3s ease; }
+        .form-input:focus { outline: none; border-color: var(--accent); background: rgba(220, 38, 38, 0.05); box-shadow: 0 0 20px rgba(220, 38, 38, 0.1); }
+        .form-input::placeholder { color: var(--text-secondary); }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-primary); }
 
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .spinner { width: 24px; height: 24px; border: 3px solid transparent; border-top-color: currentColor; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .modal-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-        }
+        #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 
-        .modal-content {
-            position: relative;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+        /* Hamburger */
+        .hamburger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 8px; }
+        .hamburger span { display: block; width: 28px; height: 2px; background: var(--text-primary); transition: all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
 
-        .modal.active .modal-content {
-            transform: scale(1) translateY(0);
-        }
-
-        /* Form Inputs */
-        .form-input {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-family: 'Manrope', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(220, 38, 38, 0.05);
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.1);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Loading Spinner */
-        .spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid transparent;
-            border-top-color: currentColor;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Particle Canvas */
-        #particles {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-            padding: 8px;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            inset: 0;
-            z-index: 999;
-            background: rgba(0, 0, 0, 0.98);
-            backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu .nav-link {
-            font-size: 1.5rem;
-        }
+        .mobile-menu { position: fixed; inset: 0; z-index: 999; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(20px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; visibility: hidden; transition: all 0.4s ease; }
+        .mobile-menu.active { opacity: 1; visibility: visible; }
+        .mobile-menu .nav-link { font-size: 1.5rem; }
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-stats {
-                position: relative !important;
-                flex-direction: row !important;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-                margin-top: 3rem;
-            }
-
-            .stat-card {
-                width: calc(50% - 0.5rem) !important;
-                min-width: 200px;
-            }
+            .hero-stats { position: relative !important; flex-direction: row !important; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: 3rem; }
+            .stat-card { width: calc(50% - 0.5rem) !important; min-width: 200px; }
         }
-
         @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .stat-card {
-                width: 100% !important;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
+            .hamburger { display: flex; }
+            .nav-links { display: none; }
+            .stat-card { width: 100% !important; }
+            .hero-content { text-align: center; }
+            .hero-buttons { justify-content: center; }
         }
 
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
 
-        /* Glow Text */
-        .glow-text {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light), var(--accent));
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-shift 4s ease infinite;
-        }
+        .glow-text { background: linear-gradient(135deg, var(--accent), var(--accent-light), var(--accent)); background-size: 200% 200%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 4s ease infinite; }
+        @keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Checkmark Animation */
-        .check-icon {
-            width: 24px;
-            height: 24px;
-            background: rgba(220, 38, 38, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        /* Ripple Effect */
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: scale(0);
-            animation: ripple-effect 0.6s ease-out;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-effect {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* CTA Gradient */
-        .cta-gradient {
-            background: linear-gradient(135deg, 
-                rgba(220, 38, 38, 0.2) 0%, 
-                rgba(30, 30, 30, 0.2) 50%, 
-                rgba(220, 38, 38, 0.2) 100%);
-            background-size: 200% 200%;
-            animation: gradient-move 8s ease infinite;
-        }
-
-        @keyframes gradient-move {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
+        .check-icon { width: 24px; height: 24px; background: rgba(220, 38, 38, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .cta-gradient { background: linear-gradient(135deg, rgba(220, 38, 38, 0.2) 0%, rgba(30, 30, 30, 0.2) 50%, rgba(220, 38, 38, 0.2) 100%); background-size: 200% 200%; animation: gradient-move 8s ease infinite; }
+        @keyframes gradient-move { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
         
-        /* Logo styling - Updated Size */
-        .brand-logo {
-            height: 65px; /* Increased size */
-            width: auto;
-            object-fit: contain;
-        }
+        .brand-logo { height: 65px; width: auto; object-fit: contain; }
     </style>
 </head>
 <body>
@@ -703,15 +204,12 @@
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
     <canvas id="particles"></canvas>
-
-    <!-- Scroll Progress -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
-                <!-- Updated Logo Source -->
                 <img src="https://z-cdn-media.chatglm.cn/files/141936ea-1dc8-46aa-852f-4cab86dca500.png?auth_key=1873085020-819d74fd5011473a8bea94b2c8b17619-0-1cbfe888443f144b3789e5fb79dc11d5" alt="Absolute Roofing Solutions Logo" class="brand-logo rounded-lg">
             </a>
 
@@ -725,15 +223,10 @@
             <div class="flex items-center gap-4">
                 <button class="btn-primary" onclick="openModal()">
                     <span>Free Estimate</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M5 12h14"/>
-                        <path d="m12 5 7 7-7 7"/>
-                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
                 <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         </div>
@@ -745,135 +238,57 @@
         <a href="#projects" class="nav-link" onclick="closeMobileMenu()">Projects</a>
         <a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a>
         <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
-        <button class="btn-primary mt-4" onclick="openModal(); closeMobileMenu();">
-            <span>Free Estimate</span>
-        </button>
+        <button class="btn-primary mt-4" onclick="openModal(); closeMobileMenu();"><span>Free Estimate</span></button>
     </div>
 
     <!-- Hero Section -->
     <section class="min-h-screen relative flex items-center pt-24 pb-16 px-4" id="hero">
         <div class="max-w-7xl mx-auto w-full">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Hero Content -->
                 <div class="hero-content">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass glass-glow mb-6">
                         <div class="live-dot"></div>
                         <span class="text-sm font-medium text-red-400">24/7 Emergency Service Available</span>
                     </div>
-
                     <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                        Protecting Your Home<br>
-                        <span class="glow-text">From The Top Down</span>
+                        Protecting Your Home<br><span class="glow-text">From The Top Down</span>
                     </h1>
-
                     <p class="text-xl text-gray-400 mb-8 max-w-xl">
                         Expert roofing solutions for residential and commercial properties in Pearland and surrounding areas. 
                         We deliver durability, style, and peace of mind with every shingle.
                     </p>
-
-                    <!-- Bullet Points -->
                     <div class="flex flex-wrap gap-4 mb-10">
                         <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
-                            <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </div>
+                            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <span class="text-sm font-medium">Licensed & Bonded</span>
                         </div>
                         <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
-                            <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </div>
+                            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <span class="text-sm font-medium">15+ Years Experience</span>
                         </div>
                         <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
-                            <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </div>
+                            <div class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                             <span class="text-sm font-medium">Free Inspections</span>
                         </div>
                     </div>
-
-                    <!-- CTA Buttons -->
                     <div class="hero-buttons flex flex-wrap gap-4">
-                        <button class="btn-primary text-lg" onclick="openModal()">
-                            <span>Get Free Quote</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14"/>
-                                <path d="m12 5 7 7-7 7"/>
-                            </svg>
-                        </button>
-                        <a href="tel:7135622172" class="btn-secondary text-lg">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                            <span>(713) 562-2172</span>
-                        </a>
+                        <button class="btn-primary text-lg" onclick="openModal()"><span>Get Free Quote</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                        <a href="tel:7135622172" class="btn-secondary text-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>(713) 562-2172</span></a>
                     </div>
                 </div>
-
-                <!-- Floating Stats Cards -->
                 <div class="hero-stats relative lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-4">
-                    <!-- Card 1 -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-sm text-gray-400 uppercase tracking-wider">Project Complete</span>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-400">Done</span>
-                        </div>
+                        <div class="flex items-center justify-between mb-4"><span class="text-sm text-gray-400 uppercase tracking-wider">Project Complete</span><span class="px-3 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-400">Done</span></div>
                         <h3 class="text-xl font-bold mb-3">Shingle Replacement</h3>
-                        <div class="progress-bar mb-2">
-                            <div class="progress-fill" data-width="100" style="width: 0%"></div>
-                        </div>
+                        <div class="progress-bar mb-2"><div class="progress-fill" data-width="100" style="width: 0%"></div></div>
                         <span class="text-sm text-gray-400">Completed on schedule</span>
                     </div>
-
-                    <!-- Card 2 -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
-                        <div class="text-center">
-                            <span class="text-6xl font-bold glow-text counter" data-target="99">0</span>
-                            <span class="text-4xl font-bold glow-text">%</span>
-                            <p class="text-gray-400 mt-2">Client Satisfaction Rate</p>
-                            <div class="flex justify-center gap-1 mt-3">
-                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                        </div>
+                        <div class="text-center"><span class="text-6xl font-bold glow-text counter" data-target="99">0</span><span class="text-4xl font-bold glow-text">%</span><p class="text-gray-400 mt-2">Client Satisfaction Rate</p><div class="flex justify-center gap-1 mt-3"><svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div>
                     </div>
-
-                    <!-- Card 3 -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
-                        <div class="flex items-center gap-2 mb-4">
-                            <div class="live-dot"></div>
-                            <span class="text-sm text-red-400 font-medium">Active Jobs</span>
-                        </div>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-medium">Commercial Flat Roof</span>
-                                    <span class="text-red-400 font-bold">75%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" data-width="75" style="width: 0%"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="font-medium">Residential Reroof</span>
-                                    <span class="text-red-400 font-bold">40%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" data-width="40" style="width: 0%"></div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="flex items-center gap-2 mb-4"><div class="live-dot"></div><span class="text-sm text-red-400 font-medium">Active Jobs</span></div>
+                        <div class="space-y-4"><div><div class="flex justify-between mb-2"><span class="font-medium">Commercial Flat Roof</span><span class="text-red-400 font-bold">75%</span></div><div class="progress-bar"><div class="progress-fill" data-width="75" style="width: 0%"></div></div></div><div><div class="flex justify-between mb-2"><span class="font-medium">Residential Reroof</span><span class="text-red-400 font-bold">40%</span></div><div class="progress-bar"><div class="progress-fill" data-width="40" style="width: 0%"></div></div></div></div>
                     </div>
                 </div>
             </div>
@@ -886,78 +301,62 @@
             <div class="text-center mb-16 reveal">
                 <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Our Services</span>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Comprehensive Roofing Solutions</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    From minor repairs to full replacements, we have the expertise to handle any roofing challenge.
-                </p>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">From new installations to emergency repairs, we have the expertise to handle any roofing challenge.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.1s">
+                <!-- Service 1: New Roofs -->
+                <div class="service-card glass glass-glow p-8 reveal" onclick="openServiceModal(0)" style="transition-delay: 0.1s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Residential Roofing</h3>
-                    <p class="text-gray-400">Complete roofing solutions for homes, including shingles, tiles, and metal roofing systems.</p>
+                    <h3 class="text-xl font-bold mb-3">New Roofs</h3>
+                    <p class="text-gray-400">Complete roof installation and replacement with premium materials and expert workmanship.</p>
                 </div>
 
-                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.2s">
+                <!-- Service 2: Storms -->
+                <div class="service-card glass glass-glow p-8 reveal" onclick="openServiceModal(1)" style="transition-delay: 0.2s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
-                            <path d="M9 22v-4h6v4"/>
-                            <path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>
-                        </svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Commercial Roofing</h3>
-                    <p class="text-gray-400">Flat roof specialists for office buildings, warehouses, and retail spaces using TPO and EPDM.</p>
+                    <h3 class="text-xl font-bold mb-3">Storms</h3>
+                    <p class="text-gray-400">24/7 emergency response for hail, wind, and storm damage to secure your home immediately.</p>
                 </div>
 
-                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.3s">
+                <!-- Service 3: Claims -->
+                <div class="service-card glass glass-glow p-8 reveal" onclick="openServiceModal(2)" style="transition-delay: 0.3s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Roof Repairs</h3>
-                    <p class="text-gray-400">Fast, reliable repairs for leaks, storm damage, and wear-and-tear to extend your roof's life.</p>
+                    <h3 class="text-xl font-bold mb-3">Claims</h3>
+                    <p class="text-gray-400">Expert assistance navigating insurance claims and meeting adjusters to maximize your coverage.</p>
                 </div>
 
-                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.4s">
+                <!-- Service 4: Leaks -->
+                <div class="service-card glass glass-glow p-8 reveal" onclick="openServiceModal(3)" style="transition-delay: 0.4s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-                        </svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Gutter Installation</h3>
-                    <p class="text-gray-400">Seamless gutter systems to protect your foundation and landscaping from water damage.</p>
+                    <h3 class="text-xl font-bold mb-3">Leaks</h3>
+                    <p class="text-gray-400">Fast detection and repair of water intrusion to prevent structural damage and mold growth.</p>
                 </div>
 
-                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.5s">
+                <!-- Service 5: Repairs -->
+                <div class="service-card glass glass-glow p-8 reveal" onclick="openServiceModal(4)" style="transition-delay: 0.5s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="m2 17 10 5 10-5"/>
-                            <path d="m2 12 10 5 10-5"/>
-                        </svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Skylights & Vents</h3>
-                    <p class="text-gray-400">Installation of skylights and ventilation systems to improve energy efficiency and airflow.</p>
+                    <h3 class="text-xl font-bold mb-3">Repairs</h3>
+                    <p class="text-gray-400">Targeted repairs for missing shingles, flashing issues, and general wear-and-tear.</p>
                 </div>
 
-                <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.6s">
+                <!-- Service 6: Quotes -->
+                <div class="service-card glass glass-glow p-8 reveal" onclick="openServiceModal(5)" style="transition-delay: 0.6s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Storm Restoration</h3>
-                    <p class="text-gray-400">Insurance claim assistance and rapid response restoration for hail and wind damage.</p>
+                    <h3 class="text-xl font-bold mb-3">Quotes</h3>
+                    <p class="text-gray-400">Free, no-obligation inspections and detailed estimates for your roofing project.</p>
                 </div>
             </div>
         </div>
@@ -969,61 +368,14 @@
             <div class="text-center mb-16 reveal">
                 <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Portfolio</span>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    See the quality of our workmanship across various residential and commercial properties.
-                </p>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">See the quality of our workmanship across various residential and commercial properties.</p>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="project-card h-80 reveal" onclick="openProjectModal(0)">
-                    <img src="https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16" alt="Residential Roofing Pearland">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Residential</span>
-                        <h3 class="text-xl font-bold">Pearland Home Renovation</h3>
-                        <p class="text-gray-400 text-sm mt-1">Complete shingle replacement</p>
-                    </div>
-                </div>
-
-                <div class="project-card h-80 reveal" onclick="openProjectModal(1)">
-                    <img src="https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36" alt="Brick House Roofing">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-gray-300 mb-2">Residential</span>
-                        <h3 class="text-xl font-bold">Traditional Brick Home</h3>
-                        <p class="text-gray-400 text-sm mt-1">Roof maintenance & repair</p>
-                    </div>
-                </div>
-
-                <div class="project-card h-80 reveal" onclick="openProjectModal(2)">
-                    <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=600&h=400&fit=crop" alt="Modern Villa Roof">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Luxury</span>
-                        <h3 class="text-xl font-bold">Luxury Shingle Roof</h3>
-                        <p class="text-gray-400 text-sm mt-1">Architectural shingle installation</p>
-                    </div>
-                </div>
-
-                <div class="project-card h-80 lg:col-span-2 reveal" onclick="openProjectModal(3)">
-                    <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=800&h=400&fit=crop" alt="Commercial Flat Roof">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-gray-300 mb-2">Commercial</span>
-                        <h3 class="text-xl font-bold">Warehouse Flat Roof</h3>
-                        <p class="text-gray-400 text-sm mt-1">TPO membrane system installation</p>
-                    </div>
-                </div>
-
-                <div class="project-card h-80 reveal" onclick="openProjectModal(4)">
-                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Residential Metal Roof">
-                    <div class="project-overlay"></div>
-                    <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Metal</span>
-                        <h3 class="text-xl font-bold">Standing Seam Metal</h3>
-                        <p class="text-gray-400 text-sm mt-1">Modern metal roof upgrade</p>
-                    </div>
-                </div>
+                <div class="project-card h-80 reveal" onclick="openProjectModal(0)"><img src="https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16" alt="Residential Roofing Pearland"><div class="project-overlay"></div><div class="project-content"><span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Residential</span><h3 class="text-xl font-bold">Pearland Home Renovation</h3><p class="text-gray-400 text-sm mt-1">Complete shingle replacement</p></div></div>
+                <div class="project-card h-80 reveal" onclick="openProjectModal(1)"><img src="https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36" alt="Brick House Roofing"><div class="project-overlay"></div><div class="project-content"><span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-gray-300 mb-2">Residential</span><h3 class="text-xl font-bold">Traditional Brick Home</h3><p class="text-gray-400 text-sm mt-1">Roof maintenance & repair</p></div></div>
+                <div class="project-card h-80 reveal" onclick="openProjectModal(2)"><img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=600&h=400&fit=crop" alt="Modern Villa Roof"><div class="project-overlay"></div><div class="project-content"><span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Luxury</span><h3 class="text-xl font-bold">Luxury Shingle Roof</h3><p class="text-gray-400 text-sm mt-1">Architectural shingle installation</p></div></div>
+                <div class="project-card h-80 lg:col-span-2 reveal" onclick="openProjectModal(3)"><img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=800&h=400&fit=crop" alt="Commercial Flat Roof"><div class="project-overlay"></div><div class="project-content"><span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-gray-300 mb-2">Commercial</span><h3 class="text-xl font-bold">Warehouse Flat Roof</h3><p class="text-gray-400 text-sm mt-1">TPO membrane system installation</p></div></div>
+                <div class="project-card h-80 reveal" onclick="openProjectModal(4)"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Residential Metal Roof"><div class="project-overlay"></div><div class="project-content"><span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Metal</span><h3 class="text-xl font-bold">Standing Seam Metal</h3><p class="text-gray-400 text-sm mt-1">Modern metal roof upgrade</p></div></div>
             </div>
         </div>
     </section>
@@ -1031,110 +383,24 @@
     <!-- Why Choose Us -->
     <section class="py-24 px-4 relative z-10" id="about">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Why Choose Us</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Reliability You Can Trust</h2>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    We take pride in our work and our reputation. Here is why homeowners choose Absolute Roofing Solutions.
-                </p>
-            </div>
-
+            <div class="text-center mb-16 reveal"><span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Why Choose Us</span><h2 class="text-4xl md:text-5xl font-bold mb-6">Reliability You Can Trust</h2><p class="text-xl text-gray-400 max-w-2xl mx-auto">We take pride in our work and our reputation. Here is why homeowners choose Absolute Roofing Solutions.</p></div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.1s">
-                    <div class="text-5xl font-bold glow-text mb-2">
-                        <span class="counter" data-target="850">0</span>+
-                    </div>
-                    <p class="text-gray-400">Roofs Completed</p>
-                </div>
-
-                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.2s">
-                    <div class="text-5xl font-bold glow-text mb-2">
-                        <span class="counter" data-target="15">0</span>+
-                    </div>
-                    <p class="text-gray-400">Years Experience</p>
-                </div>
-
-                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.3s">
-                    <div class="text-5xl font-bold glow-text mb-2">
-                        <span class="counter" data-target="99">0</span>%
-                    </div>
-                    <p class="text-gray-400">Satisfaction Rate</p>
-                </div>
-
-                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.4s">
-                    <div class="text-5xl font-bold glow-text mb-2">24/7</div>
-                    <p class="text-gray-400">Emergency Support</p>
-                </div>
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.1s"><div class="text-5xl font-bold glow-text mb-2"><span class="counter" data-target="850">0</span>+</div><p class="text-gray-400">Roofs Completed</p></div>
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.2s"><div class="text-5xl font-bold glow-text mb-2"><span class="counter" data-target="15">0</span>+</div><p class="text-gray-400">Years Experience</p></div>
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.3s"><div class="text-5xl font-bold glow-text mb-2"><span class="counter" data-target="99">0</span>%</div><p class="text-gray-400">Satisfaction Rate</p></div>
+                <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.4s"><div class="text-5xl font-bold glow-text mb-2">24/7</div><p class="text-gray-400">Emergency Support</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials - Converted to Static Grid -->
+    <!-- Testimonials -->
     <section class="py-24 px-4 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Testimonials</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
-            </div>
-
-            <!-- Static Grid Layout -->
+            <div class="text-center mb-16 reveal"><span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Testimonials</span><h2 class="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2></div>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.1s">
-                    <div class="flex gap-1 mb-4">
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <p class="text-gray-300 mb-6 flex-grow">"Dennis did a great work on our roof, quality work and fair price. I already referred him to my friends and family."</p>
-                    <div class="flex items-center gap-4 mt-auto">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold flex-shrink-0">JS</div>
-                        <div>
-                            <p class="font-bold">Jennifer S.</p>
-                            <p class="text-sm text-gray-400">Homeowner, Pearland</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.2s">
-                    <div class="flex gap-1 mb-4">
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <p class="text-gray-300 mb-6 flex-grow">"I’ve known Dennis for years—back when he ran a car shop—and he has always been one of the kindest, most considerate people I’ve met. Now that he’s doing roofing work, I had the chance to call on him again, and I’m so glad I did."</p>
-                    <div class="flex items-center gap-4 mt-auto">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 flex items-center justify-center font-bold flex-shrink-0">MR</div>
-                        <div>
-                            <p class="font-bold">Mike R.</p>
-                            <p class="text-sm text-gray-400">Business Owner</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.3s">
-                    <div class="flex gap-1 mb-4">
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                    <p class="text-gray-300 mb-6 flex-grow">"Dennis and his crew are top notch. Very honest and up front, I highly recommend them for your roofing needs."</p>
-                    <div class="flex items-center gap-4 mt-auto">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center font-bold flex-shrink-0">AT</div>
-                        <div>
-                            <p class="font-bold">Amanda T.</p>
-                            <p class="text-sm text-gray-400">Homeowner, Friendswood</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.1s"><div class="flex gap-1 mb-4"><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="text-gray-300 mb-6 flex-grow">"Dennis did a great work on our roof, quality work and fair price. I already referred him to my friends and family."</p><div class="flex items-center gap-4 mt-auto"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold flex-shrink-0">JS</div><div><p class="font-bold">Jennifer S.</p><p class="text-sm text-gray-400">Homeowner, Pearland</p></div></div></div>
+                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.2s"><div class="flex gap-1 mb-4"><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="text-gray-300 mb-6 flex-grow">"I’ve known Dennis for years—back when he ran a car shop—and he has always been one of the kindest, most considerate people I’ve met. Now that he’s doing roofing work, I had the chance to call on him again, and I’m so glad I did."</p><div class="flex items-center gap-4 mt-auto"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 flex items-center justify-center font-bold flex-shrink-0">MR</div><div><p class="font-bold">Mike R.</p><p class="text-sm text-gray-400">Business Owner</p></div></div></div>
+                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.3s"><div class="flex gap-1 mb-4"><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><p class="text-gray-300 mb-6 flex-grow">"Dennis and his crew are top notch. Very honest and up front, I highly recommend them for your roofing needs."</p><div class="flex items-center gap-4 mt-auto"><div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center font-bold flex-shrink-0">AT</div><div><p class="font-bold">Amanda T.</p><p class="text-sm text-gray-400">Homeowner, Friendswood</p></div></div></div>
             </div>
         </div>
     </section>
@@ -1144,23 +410,10 @@
         <div class="max-w-4xl mx-auto">
             <div class="cta-gradient glass glass-glow p-12 md:p-16 text-center rounded-3xl reveal">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready for a Safer, Stronger Roof?</h2>
-                <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                    Don't wait for the next storm. Get a free inspection and detailed estimate from our expert team today.
-                </p>
+                <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">Don't wait for the next storm. Get a free inspection and detailed estimate from our expert team today.</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <button class="btn-primary text-lg" onclick="openModal()">
-                        <span>Get Free Quote</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14"/>
-                            <path d="m12 5 7 7-7 7"/>
-                        </svg>
-                    </button>
-                    <a href="tel:7135622172" class="btn-secondary text-lg">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        <span>Call Us Now</span>
-                    </a>
+                    <button class="btn-primary text-lg" onclick="openModal()"><span>Get Free Quote</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+                    <a href="tel:7135622172" class="btn-secondary text-lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call Us Now</span></a>
                 </div>
             </div>
         </div>
@@ -1171,346 +424,139 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <!-- Updated Footer Logo (Big) -->
-                    <div class="mb-6">
-                        <img src="https://z-cdn-media.chatglm.cn/files/141936ea-1dc8-46aa-852f-4cab86dca500.png?auth_key=1873085020-819d74fd5011473a8bea94b2c8b17619-0-1cbfe888443f144b3789e5fb79dc11d5" alt="Absolute Roofing Solutions" class="h-24 w-auto rounded-lg">
-                    </div>
+                    <div class="mb-6"><img src="https://z-cdn-media.chatglm.cn/files/141936ea-1dc8-46aa-852f-4cab86dca500.png?auth_key=1873085020-819d74fd5011473a8bea94b2c8b17619-0-1cbfe888443f144b3789e5fb79dc11d5" alt="Absolute Roofing Solutions" class="h-24 w-auto rounded-lg"></div>
                     <p class="text-gray-400 text-sm">Protecting your home from the top down with quality materials and expert craftsmanship.</p>
                 </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Service Areas</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li>Pearland, TX</li>
-                        <li>Friendswood, TX</li>
-                        <li>Alvin, TX</li>
-                        <li>Manvel, TX</li>
-                        <li>Sugar Land, TX</li>
-                        <li>Missouri City, TX</li>
-                        <li>South Houston, TX</li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#services" class="hover:text-red-400 transition-colors">Residential</a></li>
-                        <li><a href="#services" class="hover:text-red-400 transition-colors">Commercial</a></li>
-                        <li><a href="#services" class="hover:text-red-400 transition-colors">Repairs</a></li>
-                        <li><a href="#services" class="hover:text-red-400 transition-colors">Gutters</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li>16929 Harkey Rd</li>
-                        <li>Pearland, TX 77584</li>
-                        <li><a href="mailto:d.roof.mendoza@gmail.com" class="hover:text-red-400 transition-colors">d.roof.mendoza@gmail.com</a></li>
-                        <li><a href="tel:7135622172" class="hover:text-red-400 transition-colors">(713) 562-2172</a></li>
-                    </ul>
-                </div>
+                <div><h4 class="font-bold mb-4">Service Areas</h4><ul class="space-y-2 text-sm text-gray-400"><li>Pearland, TX</li><li>Friendswood, TX</li><li>Alvin, TX</li><li>Manvel, TX</li><li>Sugar Land, TX</li><li>Missouri City, TX</li><li>South Houston, TX</li></ul></div>
+                <div><h4 class="font-bold mb-4">Services</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="#services" class="hover:text-red-400 transition-colors">New Roofs</a></li><li><a href="#services" class="hover:text-red-400 transition-colors">Storm Damage</a></li><li><a href="#services" class="hover:text-red-400 transition-colors">Insurance Claims</a></li><li><a href="#services" class="hover:text-red-400 transition-colors">Repairs</a></li></ul></div>
+                <div><h4 class="font-bold mb-4">Contact</h4><ul class="space-y-2 text-sm text-gray-400"><li>16929 Harkey Rd</li><li>Pearland, TX 77584</li><li><a href="mailto:d.roof.mendoza@gmail.com" class="hover:text-red-400 transition-colors">d.roof.mendoza@gmail.com</a></li><li><a href="tel:7135622172" class="hover:text-red-400 transition-colors">(713) 562-2172</a></li></ul></div>
             </div>
-
             <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
                 <p class="text-sm text-gray-400">2024 Absolute Roofing Solutions. All rights reserved.</p>
-                <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </a>
-                </div>
+                <div class="flex gap-4 mt-4 md:mt-0"><a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div>
             </div>
         </div>
     </footer>
 
-    <!-- Quote Modal -->
-    <div class="modal" id="quoteModal">
-        <div class="modal-backdrop" onclick="closeModal()"></div>
-        <div class="modal-content glass glass-glow p-8 md:p-10">
-            <button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Close modal">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
+    <!-- Modals -->
+    <div class="modal" id="quoteModal"><div class="modal-backdrop" onclick="closeModal()"></div><div class="modal-content glass glass-glow p-8 md:p-10"><button onclick="closeModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Close modal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class="text-center mb-8"><h3 class="text-2xl md:text-3xl font-bold mb-2">Get Your Free Estimate</h3><p class="text-gray-400">Fill out the form below and we'll get back to you within 24 hours.</p></div><form id="quoteForm" action="https://formsubmit.co/d.roof.mendoza@gmail.com" method="POST" class="space-y-5"><input type="hidden" name="_subject" value="New Quote Request from Website"><input type="hidden" name="_captcha" value="false"><input type="hidden" name="_template" value="table"><div><label class="form-label" for="name">Full Name</label><input type="text" id="name" name="name" class="form-input" placeholder="John Smith" required></div><div class="grid md:grid-cols-2 gap-5"><div><label class="form-label" for="email">Email Address</label><input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required></div><div><label class="form-label" for="phone">Phone Number</label><input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" required></div></div><div><label class="form-label" for="projectType">Service Needed</label><select id="projectType" name="projectType" class="form-input" required><option value="">Select service...</option><option value="New Roof">New Roof Installation</option><option value="Storm">Storm Damage</option><option value="Claim">Insurance Claim</option><option value="Leak">Leak Repair</option><option value="Repair">General Repair</option><option value="Quote">Free Quote</option></select></div><div><label class="form-label" for="description">Project Description</label><textarea id="description" name="description" rows="4" class="form-input resize-none" placeholder="Tell us about your roofing needs..." required></textarea></div><button type="submit" class="btn-primary w-full justify-center text-lg py-4" id="submitBtn"><span id="submitText">Submit Request</span><span id="submitSpinner" class="spinner hidden"></span></button></form></div></div>
 
-            <div class="text-center mb-8">
-                <h3 class="text-2xl md:text-3xl font-bold mb-2">Get Your Free Estimate</h3>
-                <p class="text-gray-400">Fill out the form below and we'll get back to you within 24 hours.</p>
-            </div>
-
-            <form id="quoteForm" action="https://formsubmit.co/d.roof.mendoza@gmail.com" method="POST" class="space-y-5">
-                <input type="hidden" name="_subject" value="New Quote Request from Website">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-
-                <div>
-                    <label class="form-label" for="name">Full Name</label>
-                    <input type="text" id="name" name="name" class="form-input" placeholder="John Smith" required>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-5">
-                    <div>
-                        <label class="form-label" for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
-                    </div>
-                    <div>
-                        <label class="form-label" for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567" required>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="form-label" for="projectType">Service Needed</label>
-                    <select id="projectType" name="projectType" class="form-input" required>
-                        <option value="">Select service...</option>
-                        <option value="Roof Replacement">Roof Replacement</option>
-                        <option value="Roof Repair">Roof Repair</option>
-                        <option value="New Construction">New Construction</option>
-                        <option value="Gutters">Gutter Installation</option>
-                        <option value="Inspection">Roof Inspection</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="form-label" for="description">Project Description</label>
-                    <textarea id="description" name="description" rows="4" class="form-input resize-none" placeholder="Tell us about your roofing needs..." required></textarea>
-                </div>
-
-                <button type="submit" class="btn-primary w-full justify-center text-lg py-4" id="submitBtn">
-                    <span id="submitText">Submit Request</span>
-                    <span id="submitSpinner" class="spinner hidden"></span>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Project Modal -->
-    <div class="modal" id="projectModal">
-        <div class="modal-backdrop" onclick="closeProjectModal()"></div>
-        <div class="modal-content glass glass-glow p-0 overflow-hidden max-w-4xl">
-            <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Close modal">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
-            <div id="projectModalContent"></div>
-        </div>
-    </div>
+    <!-- Generic Info Modal (Used for Services & Projects) -->
+    <div class="modal" id="infoModal"><div class="modal-backdrop" onclick="closeInfoModal()"></div><div class="modal-content glass glass-glow p-0 overflow-hidden max-w-4xl"><button onclick="closeInfoModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Close modal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div id="infoModalContent"></div></div></div>
 
     <script>
-        // Project Data
-        const projects = [
+        // Data
+        const services = [
             {
-                title: "Pearland Home Renovation",
-                type: "Residential",
-                image: "https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16",
-                description: "Complete tear-off and replacement of an aging roof with high-quality architectural shingles. Features improved ventilation and ice & water shield protection.",
-                stats: { area: "3,200 sq ft", completion: "2023", budget: "$18.5k" },
+                title: "New Roofs",
+                icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+                shortDesc: "Complete roof installation and replacement with premium materials.",
+                longDesc: "Whether you are building a new home or replacing an old, worn-out roof, we provide comprehensive installation services tailored to your needs. We specialize in a variety of materials including architectural shingles, metal roofing, and tile.",
+                list: ["Full tear-off and replacement", "New construction installation", "Material selection guidance", "Manufacturer warranties included", "Ventilation and flashing integration"]
             },
             {
-                title: "Traditional Brick Home",
-                type: "Residential",
-                image: "https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36",
-                description: "Roof maintenance and repair for a traditional style brick home. Included flashing repair and gutter cleaning to ensure longevity.",
-                stats: { area: "2,100 sq ft", completion: "2024", budget: "$4.5k" },
+                title: "Storms",
+                icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"/><polyline points="13 11 9 17 15 17 11 23"/></svg>',
+                shortDesc: "24/7 emergency response for hail, wind, and storm damage.",
+                longDesc: "Texas weather can be unpredictable. When severe weather strikes, our emergency response team is ready to secure your property immediately. We act fast to prevent further damage to your home's interior.",
+                list: ["24/7 Emergency tarping", "Hail damage assessment", "Wind damage repair", "Emergency leak stop", "Direct insurance billing"]
             },
             {
-                title: "Luxury Shingle Roof",
-                type: "Luxury Residential",
-                image: "https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&h=600&fit=crop",
-                description: "Premium architectural shingle installation on a modern luxury home. Focused on aesthetics and durability.",
-                stats: { area: "4,500 sq ft", completion: "2023", budget: "$25k" },
+                title: "Claims",
+                icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
+                shortDesc: "Expert assistance navigating insurance claims and paperwork.",
+                longDesc: "Navigating the insurance claims process can be overwhelming. We work directly with your insurance company, meeting adjusters on-site to ensure all damage is documented and you receive the full compensation you deserve.",
+                list: ["Adjuster meeting assistance", "Detailed damage documentation", "Claims paperwork handling", "Supplemental claim support", "Direct communication with insurer"]
             },
             {
-                title: "Warehouse Flat Roof",
-                type: "Commercial",
-                image: "https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=1200&h=600&fit=crop",
-                description: "Installation of a durable TPO membrane system on a 20,000 sq ft warehouse.",
-                stats: { area: "20,000 sq ft", completion: "2023", budget: "$85k" },
+                title: "Leaks",
+                icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+                shortDesc: "Fast detection and repair to prevent water damage.",
+                longDesc: "A small leak can lead to mold, rot, and structural issues if left untreated. We use advanced techniques to pinpoint the source of water intrusion and provide durable, long-lasting repairs.",
+                list: ["Water stain diagnosis", "Flashing and sealant repair", "Skylight leak repair", "Chimney flashing fixes", "Gutter and drainage correction"]
             },
             {
-                title: "Standing Seam Metal",
-                type: "Metal Roofing",
-                image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=600&fit=crop",
-                description: "Premium standing seam metal roof installation for a modern home. Chosen for its longevity and weather resistance.",
-                stats: { area: "3,800 sq ft", completion: "2024", budget: "$38k" },
+                title: "Repairs",
+                icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',
+                shortDesc: "Targeted repairs to extend the life of your roof.",
+                longDesc: "Not every roof needs a full replacement. We provide honest assessments and perform targeted repairs to maximize the lifespan of your existing roof, saving you money and extending its durability.",
+                list: ["Missing shingle replacement", "Vent pipe boot repair", "Fascia and soffit repair", "Ponding water resolution", "Roof maintenance plans"]
+            },
+            {
+                title: "Quotes",
+                icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>',
+                shortDesc: "Free, no-obligation inspections and detailed estimates.",
+                longDesc: "Transparency is our priority. We provide thorough, no-cost inspections and detailed written estimates. We explain the condition of your roof and outline your options clearly so you can make informed decisions.",
+                list: ["Complimentary roof inspection", "Detailed written estimates", "Photo documentation provided", "Honest assessment of condition", "Flexible scheduling"]
             }
         ];
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            initParticles();
-            initScrollProgress();
-            initNavbar();
-            initRevealAnimations();
-            initCounters();
-            initProgressBars();
-            initTiltCards();
-            initMobileMenu();
-            initFormSubmission();
-        });
+        const projects = [
+            { title: "Pearland Home Renovation", type: "Residential", image: "https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16", description: "Complete tear-off and replacement of an aging roof with high-quality architectural shingles.", stats: { area: "3,200 sq ft", completion: "2023", budget: "$18.5k" } },
+            { title: "Traditional Brick Home", type: "Residential", image: "https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36", description: "Roof maintenance and repair for a traditional style brick home.", stats: { area: "2,100 sq ft", completion: "2024", budget: "$4.5k" } },
+            { title: "Luxury Shingle Roof", type: "Luxury Residential", image: "https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&h=600&fit=crop", description: "Premium architectural shingle installation on a modern luxury home.", stats: { area: "4,500 sq ft", completion: "2023", budget: "$25k" } },
+            { title: "Warehouse Flat Roof", type: "Commercial", image: "https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=1200&h=600&fit=crop", description: "Installation of a durable TPO membrane system on a 20,000 sq ft warehouse.", stats: { area: "20,000 sq ft", completion: "2023", budget: "$85k" } },
+            { title: "Standing Seam Metal", type: "Metal Roofing", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=600&fit=crop", description: "Premium standing seam metal roof installation for a modern home.", stats: { area: "3,800 sq ft", completion: "2024", budget: "$38k" } }
+        ];
 
-        // Particle System
-        function initParticles() {
-            const canvas = document.getElementById('particles');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => { initParticles(); initScrollProgress(); initNavbar(); initRevealAnimations(); initCounters(); initProgressBars(); initTiltCards(); initMobileMenu(); initFormSubmission(); });
+
+        function initParticles() { const canvas = document.getElementById('particles'); const ctx = canvas.getContext('2d'); let particles = []; function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } resize(); window.addEventListener('resize', resize); class Particle { constructor() { this.reset(); } reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.size = Math.random() * 2 + 0.5; this.speedX = (Math.random() - 0.5) * 0.3; this.speedY = (Math.random() - 0.5) * 0.3; this.opacity = Math.random() * 0.5 + 0.1; } update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); } draw() { ctx.beginPath(); ctx.arc(this.x, this.y, Math.max(0.1, this.size), 0, Math.PI * 2); ctx.fillStyle = `rgba(220, 38, 38, ${this.opacity})`; ctx.fill(); } } for (let i = 0; i < 60; i++) particles.push(new Particle()); function animate() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(animate); } animate(); }
+        function initScrollProgress() { const progressBar = document.getElementById('scrollProgress'); window.addEventListener('scroll', () => { const docHeight = document.documentElement.scrollHeight - window.innerHeight; progressBar.style.transform = `scaleX(${window.scrollY / docHeight})`; }); }
+        function initNavbar() { const navbar = document.getElementById('navbar'); window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); }); }
+        function initRevealAnimations() { const reveals = document.querySelectorAll('.reveal'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 }); reveals.forEach(el => observer.observe(el)); }
+        function initCounters() { const counters = document.querySelectorAll('.counter'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const counter = entry.target; const target = parseInt(counter.dataset.target); let start = 0; const increment = target / 100; const updateCounter = () => { if (start < target) { start += increment; counter.textContent = Math.ceil(start); requestAnimationFrame(updateCounter); } else counter.textContent = target; }; updateCounter(); observer.unobserve(counter); } }); }, { threshold: 0.5 }); counters.forEach(c => observer.observe(c)); }
+        function initProgressBars() { const bars = document.querySelectorAll('.progress-fill'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { setTimeout(() => { entry.target.style.width = entry.target.dataset.width + '%'; }, 300); observer.unobserve(entry.target); } }); }, { threshold: 0.5 }); bars.forEach(b => observer.observe(b)); }
+        function initTiltCards() { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; document.querySelectorAll('.tilt-card').forEach(card => { card.addEventListener('mousemove', (e) => { const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; const centerX = rect.width / 2; const centerY = rect.height / 2; const rotateX = (y - centerY) / 20; const rotateY = (centerX - x) / 20; card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`; }); card.addEventListener('mouseleave', () => { card.style.transform = ''; }); }); }
+        function initMobileMenu() { const hamburger = document.getElementById('hamburger'); const mobileMenu = document.getElementById('mobileMenu'); hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }); }
+        function closeMobileMenu() { document.getElementById('hamburger').classList.remove('active'); document.getElementById('mobileMenu').classList.remove('active'); document.body.style.overflow = ''; }
+        function openModal() { document.getElementById('quoteModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('quoteModal').classList.remove('active'); document.body.style.overflow = ''; }
+        function initFormSubmission() { const form = document.getElementById('quoteForm'); form.addEventListener('submit', () => { document.getElementById('submitText').classList.add('hidden'); document.getElementById('submitSpinner').classList.remove('hidden'); document.getElementById('submitBtn').disabled = true; }); }
+
+        // Generic Info Modal Logic
+        function openServiceModal(index) {
+            const service = services[index];
+            const modal = document.getElementById('infoModal');
+            const content = document.getElementById('infoModalContent');
             
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            resize();
-            window.addEventListener('resize', resize);
-            
-            class Particle {
-                constructor() { this.reset(); }
-                reset() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2 + 0.5;
-                    this.speedX = (Math.random() - 0.5) * 0.3;
-                    this.speedY = (Math.random() - 0.5) * 0.3;
-                    this.opacity = Math.random() * 0.5 + 0.1;
-                }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, Math.max(0.1, this.size), 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(220, 38, 38, ${this.opacity})`;
-                    ctx.fill();
-                }
-            }
-            
-            for (let i = 0; i < 60; i++) particles.push(new Particle());
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(animate);
-            }
-            animate();
-        }
+            let listItems = service.list.map(item => `
+                <li class="flex items-center gap-3">
+                    <div class="check-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <span>${item}</span>
+                </li>
+            `).join('');
 
-        function initScrollProgress() {
-            const progressBar = document.getElementById('scrollProgress');
-            window.addEventListener('scroll', () => {
-                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                progressBar.style.transform = `scaleX(${window.scrollY / docHeight})`;
-            });
-        }
-
-        function initNavbar() {
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
-            });
-        }
-
-        function initRevealAnimations() {
-            const reveals = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('active');
-                });
-            }, { threshold: 0.1 });
-            reveals.forEach(el => observer.observe(el));
-        }
-
-        function initCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counter = entry.target;
-                        const target = parseInt(counter.dataset.target);
-                        let start = 0;
-                        const increment = target / 100;
-                        const updateCounter = () => {
-                            if (start < target) {
-                                start += increment;
-                                counter.textContent = Math.ceil(start);
-                                requestAnimationFrame(updateCounter);
-                            } else counter.textContent = target;
-                        };
-                        updateCounter();
-                        observer.unobserve(counter);
-                    }
-                });
-            }, { threshold: 0.5 });
-            counters.forEach(c => observer.observe(c));
-        }
-
-        function initProgressBars() {
-            const bars = document.querySelectorAll('.progress-fill');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.width = entry.target.dataset.width + '%';
-                        }, 300);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            bars.forEach(b => observer.observe(b));
-        }
-
-        function initTiltCards() {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            document.querySelectorAll('.tilt-card').forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 20;
-                    const rotateY = (centerX - x) / 20;
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-                });
-                card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-            });
-        }
-
-        function initMobileMenu() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-            });
-        }
-        
-        function closeMobileMenu() {
-            document.getElementById('hamburger').classList.remove('active');
-            document.getElementById('mobileMenu').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function openModal() {
-            document.getElementById('quoteModal').classList.add('active');
+            content.innerHTML = `
+                <div class="p-8 md:p-10">
+                    <div class="service-icon mb-6">${service.icon}</div>
+                    <h3 class="text-3xl font-bold mb-4">${service.title}</h3>
+                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">${service.longDesc}</p>
+                    <div class="glass p-6 rounded-xl">
+                        <h4 class="font-bold mb-4 text-lg">What's Included:</h4>
+                        <ul class="space-y-3 text-gray-300">
+                            ${listItems}
+                        </ul>
+                    </div>
+                    <button onclick="openModal(); closeInfoModal();" class="btn-primary mt-8 w-full justify-center">
+                        <span>Get a Quote for ${service.title}</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                </div>
+            `;
+            modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModal() {
-            document.getElementById('quoteModal').classList.remove('active');
-            document.body.style.overflow = '';
         }
 
         function openProjectModal(index) {
             const project = projects[index];
-            const modal = document.getElementById('projectModal');
-            const content = document.getElementById('projectModalContent');
+            const modal = document.getElementById('infoModal');
+            const content = document.getElementById('infoModalContent');
             
             content.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover">
@@ -1519,54 +565,23 @@
                     <h3 class="text-3xl font-bold mb-4">${project.title}</h3>
                     <p class="text-gray-400 mb-8">${project.description}</p>
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="glass p-4 rounded-xl text-center">
-                            <p class="text-2xl font-bold glow-text">${project.stats.area}</p>
-                            <p class="text-xs text-gray-400 mt-1">Total Area</p>
-                        </div>
-                        <div class="glass p-4 rounded-xl text-center">
-                            <p class="text-2xl font-bold glow-text">${project.stats.completion}</p>
-                            <p class="text-xs text-gray-400 mt-1">Completion</p>
-                        </div>
-                        <div class="glass p-4 rounded-xl text-center">
-                            <p class="text-2xl font-bold glow-text">${project.stats.budget}</p>
-                            <p class="text-xs text-gray-400 mt-1">Budget</p>
-                        </div>
+                        <div class="glass p-4 rounded-xl text-center"><p class="text-2xl font-bold glow-text">${project.stats.area}</p><p class="text-xs text-gray-400 mt-1">Total Area</p></div>
+                        <div class="glass p-4 rounded-xl text-center"><p class="text-2xl font-bold glow-text">${project.stats.completion}</p><p class="text-xs text-gray-400 mt-1">Completion</p></div>
+                        <div class="glass p-4 rounded-xl text-center"><p class="text-2xl font-bold glow-text">${project.stats.budget}</p><p class="text-xs text-gray-400 mt-1">Budget</p></div>
                     </div>
                 </div>
             `;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
-        function closeProjectModal() {
-            document.getElementById('projectModal').classList.remove('active');
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        function initFormSubmission() {
-            const form = document.getElementById('quoteForm');
-            form.addEventListener('submit', () => {
-                document.getElementById('submitText').classList.add('hidden');
-                document.getElementById('submitSpinner').classList.remove('hidden');
-                document.getElementById('submitBtn').disabled = true;
-            });
-        }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-                closeProjectModal();
-                closeMobileMenu();
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal(); closeInfoModal(); closeMobileMenu(); } });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); });
     </script>
 </body>
 </html>
