@@ -3,25 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Construction | Building the Future</title>
+    <title>Absolute Roofing Solutions | Quality Roofing in Texas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Removed EmailJS as Formsubmit handles the backend -->
     <style>
         :root {
-            --bg-deep: #020617;
-            --bg-slate: #0F172A;
-            --bg-card: rgba(15, 23, 42, 0.6);
-            --gold: #F59E0B;
-            --orange: #FB923C;
+            --bg-deep: #000000;
+            --bg-slate: #0a0a0a;
+            --bg-card: rgba(10, 10, 10, 0.6);
+            --accent: #DC2626; /* Brand Red */
+            --accent-light: #EF4444;
             --emerald: #10B981;
-            --blue: #3B82F6;
-            --purple: #8B5CF6;
-            --text-primary: #F8FAFC;
-            --text-secondary: #94A3B8;
-            --border-glow: rgba(245, 158, 11, 0.3);
+            --blue: #0EA5E9;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A3A3A3;
+            --border-glow: rgba(220, 38, 38, 0.3);
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.1);
         }
@@ -55,8 +53,8 @@
             position: fixed;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(245, 158, 11, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(245, 158, 11, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(220, 38, 38, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(220, 38, 38, 0.03) 1px, transparent 1px);
             background-size: 60px 60px;
             pointer-events: none;
             z-index: 0;
@@ -67,7 +65,7 @@
             position: fixed;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none;
             z-index: 0;
         }
@@ -75,7 +73,7 @@
         .orb-1 {
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
             top: -200px;
             right: -200px;
             animation: float-1 20s ease-in-out infinite;
@@ -84,7 +82,7 @@
         .orb-2 {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+            background: radial-gradient(circle, #333 0%, transparent 70%);
             bottom: -100px;
             left: -200px;
             animation: float-2 25s ease-in-out infinite;
@@ -93,7 +91,7 @@
         .orb-3 {
             width: 400px;
             height: 400px;
-            background: radial-gradient(circle, var(--emerald) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
             top: 50%;
             left: 50%;
             animation: float-3 18s ease-in-out infinite;
@@ -127,7 +125,7 @@
 
         .glass-glow {
             box-shadow: 
-                0 0 30px rgba(245, 158, 11, 0.1),
+                0 0 30px rgba(220, 38, 38, 0.05),
                 0 8px 32px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
@@ -144,7 +142,7 @@
         }
 
         .navbar.scrolled {
-            background: rgba(2, 6, 23, 0.9);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
@@ -166,7 +164,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--gold), var(--orange));
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
             transition: width 0.3s ease;
         }
 
@@ -185,8 +183,8 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.875rem 2rem;
-            background: linear-gradient(135deg, var(--gold), var(--orange));
-            color: var(--bg-deep);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
             font-weight: 600;
             font-family: 'Space Grotesk', sans-serif;
             border: none;
@@ -201,14 +199,14 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--orange), var(--gold));
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
         }
 
         .btn-primary:hover::before {
@@ -237,9 +235,9 @@
         }
 
         .btn-secondary:hover {
-            border-color: var(--gold);
-            background: rgba(245, 158, 11, 0.1);
-            box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+            border-color: var(--accent);
+            background: rgba(220, 38, 38, 0.1);
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.2);
         }
 
         /* Progress Bar */
@@ -252,7 +250,7 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--gold), var(--orange));
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
             border-radius: 3px;
             transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
@@ -297,22 +295,22 @@
 
         /* Star Rating */
         .star {
-            color: var(--gold);
-            filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.5));
+            color: var(--accent);
+            filter: drop-shadow(0 0 4px rgba(220, 38, 38, 0.5));
         }
 
         /* Live Indicator */
         .live-dot {
             width: 8px;
             height: 8px;
-            background: var(--emerald);
+            background: var(--accent);
             border-radius: 50%;
             animation: pulse-live 2s ease-in-out infinite;
         }
 
         @keyframes pulse-live {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-            50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.5); }
+            50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
         }
 
         /* Section Reveal */
@@ -343,15 +341,15 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), transparent);
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .service-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(245, 158, 11, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(245, 158, 11, 0.1);
+            border-color: rgba(220, 38, 38, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(220, 38, 38, 0.1);
         }
 
         .service-card:hover::before {
@@ -364,19 +362,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(251, 146, 60, 0.1));
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(239, 68, 68, 0.1));
             border-radius: 16px;
             margin-bottom: 1.5rem;
             transition: all 0.4s ease;
         }
 
         .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--gold), var(--orange));
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
             transform: scale(1.1);
         }
 
         .service-card:hover .service-icon svg {
-            stroke: var(--bg-deep);
+            stroke: white;
         }
 
         /* Project Cards */
@@ -401,7 +399,7 @@
         .project-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 0%, transparent 60%);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, transparent 60%);
             opacity: 0.8;
             transition: opacity 0.4s ease;
         }
@@ -436,7 +434,7 @@
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--orange), var(--emerald));
+            background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--blue));
             z-index: 1001;
             transform-origin: left;
             transform: scaleX(0);
@@ -463,7 +461,7 @@
         .modal-backdrop {
             position: absolute;
             inset: 0;
-            background: rgba(2, 6, 23, 0.9);
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
         }
 
@@ -496,9 +494,9 @@
 
         .form-input:focus {
             outline: none;
-            border-color: var(--gold);
-            background: rgba(245, 158, 11, 0.05);
-            box-shadow: 0 0 20px rgba(245, 158, 11, 0.1);
+            border-color: var(--accent);
+            background: rgba(220, 38, 38, 0.05);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.1);
         }
 
         .form-input::placeholder {
@@ -568,7 +566,7 @@
             position: fixed;
             inset: 0;
             z-index: 999;
-            background: rgba(2, 6, 23, 0.98);
+            background: rgba(0, 0, 0, 0.98);
             backdrop-filter: blur(20px);
             display: flex;
             flex-direction: column;
@@ -639,7 +637,7 @@
 
         /* Glow Text */
         .glow-text {
-            background: linear-gradient(135deg, var(--gold), var(--orange), var(--gold));
+            background: linear-gradient(135deg, var(--accent), var(--accent-light), var(--accent));
             background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
@@ -656,7 +654,7 @@
         .check-icon {
             width: 24px;
             height: 24px;
-            background: rgba(16, 185, 129, 0.2);
+            background: rgba(220, 38, 38, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -684,9 +682,9 @@
         /* CTA Gradient */
         .cta-gradient {
             background: linear-gradient(135deg, 
-                rgba(245, 158, 11, 0.2) 0%, 
-                rgba(59, 130, 246, 0.2) 50%, 
-                rgba(16, 185, 129, 0.2) 100%);
+                rgba(220, 38, 38, 0.2) 0%, 
+                rgba(30, 30, 30, 0.2) 50%, 
+                rgba(220, 38, 38, 0.2) 100%);
             background-size: 200% 200%;
             animation: gradient-move 8s ease infinite;
         }
@@ -694,6 +692,13 @@
         @keyframes gradient-move {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+        }
+        
+        /* Logo styling */
+        .brand-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -712,18 +717,9 @@
     <nav class="navbar" id="navbar">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-900">
-                        <path d="M3 21h18"/>
-                        <path d="M5 21V7l8-4v18"/>
-                        <path d="M19 21V11l-6-4"/>
-                        <path d="M9 9v.01"/>
-                        <path d="M9 12v.01"/>
-                        <path d="M9 15v.01"/>
-                        <path d="M9 18v.01"/>
-                    </svg>
-                </div>
-                <span class="text-xl font-bold font-['Space_Grotesk']">Apex Construction</span>
+                <!-- Updated Logo Image -->
+                <img src="https://z-cdn-media.chatglm.cn/files/442cf0a9-f6e5-4e2b-beb0-79f8c553fbce.jpg?auth_key=1873079473-a5cdc5c4c2d4417b8c57ea79d7b3b114-0-33c7a7ab17ae49ef91a2965db507d26f" alt="Absolute Roofing Solutions Logo" class="brand-logo rounded-lg">
+                <span class="text-xl font-bold font-['Space_Grotesk'] hidden md:block">Absolute Roofing Solutions</span>
             </a>
 
             <div class="nav-links hidden md:flex items-center gap-8">
@@ -735,7 +731,7 @@
 
             <div class="flex items-center gap-4">
                 <button class="btn-primary" onclick="openModal()">
-                    <span>Get Quote</span>
+                    <span>Free Estimate</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14"/>
                         <path d="m12 5 7 7-7 7"/>
@@ -757,7 +753,7 @@
         <a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a>
         <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
         <button class="btn-primary mt-4" onclick="openModal(); closeMobileMenu();">
-            <span>Get Quote</span>
+            <span>Free Estimate</span>
         </button>
     </div>
 
@@ -769,52 +765,44 @@
                 <div class="hero-content">
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass glass-glow mb-6">
                         <div class="live-dot"></div>
-                        <span class="text-sm font-medium text-amber-400">Now Accepting New Projects</span>
+                        <span class="text-sm font-medium text-red-400">24/7 Emergency Service Available</span>
                     </div>
 
                     <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                        Building the Future<br>
-                        <span class="glow-text">With Precision</span>
+                        Protecting Your Home<br>
+                        <span class="glow-text">From The Top Down</span>
                     </h1>
 
-                    <p class="text-xl text-slate-400 mb-8 max-w-xl">
-                        Modern construction solutions for homes, offices, and commercial projects. 
-                        We transform visions into reality with cutting-edge technology and expert craftsmanship.
+                    <p class="text-xl text-gray-400 mb-8 max-w-xl">
+                        Expert roofing solutions for residential and commercial properties in Pearland and surrounding areas. 
+                        We deliver durability, style, and peace of mind with every shingle.
                     </p>
 
                     <!-- Bullet Points -->
                     <div class="flex flex-wrap gap-4 mb-10">
                         <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium">Licensed & Insured</span>
+                            <span class="text-sm font-medium">Licensed & Bonded</span>
                         </div>
                         <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium">10+ Years Experience</span>
+                            <span class="text-sm font-medium">15+ Years Experience</span>
                         </div>
                         <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
                             <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                                     <polyline points="20 6 9 17 4 12"/>
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium">98% Satisfaction</span>
-                        </div>
-                        <div class="flex items-center gap-3 px-4 py-2 rounded-xl glass">
-                            <div class="check-icon">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </div>
-                            <span class="text-sm font-medium">Fast Completion</span>
+                            <span class="text-sm font-medium">Free Inspections</span>
                         </div>
                     </div>
 
@@ -827,12 +815,11 @@
                                 <path d="m12 5 7 7-7 7"/>
                             </svg>
                         </button>
-                        <a href="#projects" class="btn-secondary text-lg">
-                            <span>View Projects</span>
+                        <a href="tel:7135622172" class="btn-secondary text-lg">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m7 15 5 5 5-5"/>
-                                <path d="m7 9 5-5 5 5"/>
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                             </svg>
+                            <span>(713) 562-2172</span>
                         </a>
                     </div>
                 </div>
@@ -842,22 +829,22 @@
                     <!-- Card 1: Project Complete -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-sm text-slate-400 uppercase tracking-wider">Project Complete</span>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400">Done</span>
+                            <span class="text-sm text-gray-400 uppercase tracking-wider">Project Complete</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-400">Done</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-3">Modern Villa</h3>
+                        <h3 class="text-xl font-bold mb-3">Shingle Replacement</h3>
                         <div class="progress-bar mb-2">
                             <div class="progress-fill" data-width="100" style="width: 0%"></div>
                         </div>
-                        <span class="text-sm text-slate-400">Completed on time</span>
+                        <span class="text-sm text-gray-400">Completed on schedule</span>
                     </div>
 
                     <!-- Card 2: Client Satisfaction -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
                         <div class="text-center">
-                            <span class="text-6xl font-bold glow-text counter" data-target="98">0</span>
+                            <span class="text-6xl font-bold glow-text counter" data-target="99">0</span>
                             <span class="text-4xl font-bold glow-text">%</span>
-                            <p class="text-slate-400 mt-2">Client Satisfaction Rate</p>
+                            <p class="text-gray-400 mt-2">Client Satisfaction Rate</p>
                             <div class="flex justify-center gap-1 mt-3">
                                 <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg class="star w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -872,13 +859,13 @@
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
                         <div class="flex items-center gap-2 mb-4">
                             <div class="live-dot"></div>
-                            <span class="text-sm text-emerald-400 font-medium">Active Projects</span>
+                            <span class="text-sm text-red-400 font-medium">Active Jobs</span>
                         </div>
                         <div class="space-y-4">
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <span class="font-medium">Downtown Office Complex</span>
-                                    <span class="text-amber-400 font-bold">75%</span>
+                                    <span class="font-medium">Commercial Flat Roof</span>
+                                    <span class="text-red-400 font-bold">75%</span>
                                 </div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" data-width="75" style="width: 0%"></div>
@@ -886,8 +873,8 @@
                             </div>
                             <div>
                                 <div class="flex justify-between mb-2">
-                                    <span class="font-medium">Riverside Homes</span>
-                                    <span class="text-amber-400 font-bold">40%</span>
+                                    <span class="font-medium">Residential Reroof</span>
+                                    <span class="text-red-400 font-bold">40%</span>
                                 </div>
                                 <div class="progress-bar">
                                     <div class="progress-fill" data-width="40" style="width: 0%"></div>
@@ -904,10 +891,10 @@
     <section class="py-24 px-4 relative z-10" id="services">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Our Services</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">What We Do Best</h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-                    From residential dream homes to large commercial complexes, we deliver excellence in every project.
+                <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Our Services</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Comprehensive Roofing Solutions</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    From minor repairs to full replacements, we have the expertise to handle any roofing challenge.
                 </p>
             </div>
 
@@ -915,18 +902,18 @@
                 <!-- Service Cards -->
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.1s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                             <polyline points="9 22 9 12 15 12 15 22"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Residential Construction</h3>
-                    <p class="text-slate-400">Custom homes built with precision and care, from modern minimalist to classic designs.</p>
+                    <h3 class="text-xl font-bold mb-3">Residential Roofing</h3>
+                    <p class="text-gray-400">Complete roofing solutions for homes, including shingles, tiles, and metal roofing systems.</p>
                 </div>
 
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.2s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
                             <path d="M9 22v-4h6v4"/>
                             <path d="M8 6h.01"/>
@@ -940,53 +927,53 @@
                             <path d="M8 14h.01"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Commercial Construction</h3>
-                    <p class="text-slate-400">Office buildings, retail spaces, and industrial facilities designed for success.</p>
+                    <h3 class="text-xl font-bold mb-3">Commercial Roofing</h3>
+                    <p class="text-gray-400">Flat roof specialists for office buildings, warehouses, and retail spaces using TPO and EPDM.</p>
                 </div>
 
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.3s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Renovations</h3>
-                    <p class="text-slate-400">Transform your existing space with our expert renovation and remodeling services.</p>
+                    <h3 class="text-xl font-bold mb-3">Roof Repairs</h3>
+                    <p class="text-gray-400">Fast, reliable repairs for leaks, storm damage, and wear-and-tear to extend your roof's life.</p>
                 </div>
 
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.4s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Interior Remodeling</h3>
-                    <p class="text-slate-400">Stunning interior transformations that elevate your living and working spaces.</p>
+                    <h3 class="text-xl font-bold mb-3">Gutter Installation</h3>
+                    <p class="text-gray-400">Seamless gutter systems to protect your foundation and landscaping from water damage.</p>
                 </div>
 
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.5s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="m2 17 10 5 10-5"/>
                             <path d="m2 12 10 5 10-5"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Custom Homes</h3>
-                    <p class="text-slate-400">Bespoke architectural masterpieces tailored to your unique vision and lifestyle.</p>
+                    <h3 class="text-xl font-bold mb-3">Skylights & Vents</h3>
+                    <p class="text-gray-400">Installation of skylights and ventilation systems to improve energy efficiency and airflow.</p>
                 </div>
 
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.6s">
                     <div class="service-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Project Management</h3>
-                    <p class="text-slate-400">End-to-end project oversight ensuring timely delivery and budget compliance.</p>
+                    <h3 class="text-xl font-bold mb-3">Storm Restoration</h3>
+                    <p class="text-gray-400">Insurance claim assistance and rapid response restoration for hail and wind damage.</p>
                 </div>
             </div>
         </div>
@@ -996,62 +983,66 @@
     <section class="py-24 px-4 relative z-10" id="projects">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Portfolio</span>
+                <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Portfolio</span>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Featured Projects</h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-                    Explore our latest construction achievements and see the quality we deliver.
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    See the quality of our workmanship across various residential and commercial properties.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Project Cards -->
+                <!-- Project 1: User Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(0)">
-                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&h=400&fit=crop" alt="Modern Villa">
+                    <img src="https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16" alt="Residential Roofing Pearland">
                     <div class="project-overlay"></div>
                     <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-amber-400 mb-2">Residential</span>
-                        <h3 class="text-xl font-bold">Modern Villa</h3>
-                        <p class="text-slate-400 text-sm mt-1">Luxury waterfront property</p>
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Residential</span>
+                        <h3 class="text-xl font-bold">Pearland Home Renovation</h3>
+                        <p class="text-gray-400 text-sm mt-1">Complete shingle replacement</p>
                     </div>
                 </div>
 
+                <!-- Project 2: User Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(1)">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop" alt="Downtown Office">
+                    <img src="https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36" alt="Brick House Roofing">
                     <div class="project-overlay"></div>
                     <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-blue-400 mb-2">Commercial</span>
-                        <h3 class="text-xl font-bold">Downtown Office Complex</h3>
-                        <p class="text-slate-400 text-sm mt-1">12-story corporate building</p>
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-gray-300 mb-2">Residential</span>
+                        <h3 class="text-xl font-bold">Traditional Brick Home</h3>
+                        <p class="text-gray-400 text-sm mt-1">Roof maintenance & repair</p>
                     </div>
                 </div>
 
+                <!-- Project 3: Stock Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(2)">
-                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=400&fit=crop" alt="Riverside Homes">
+                    <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=600&h=400&fit=crop" alt="Modern Villa Roof">
                     <div class="project-overlay"></div>
                     <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-emerald-400 mb-2">Residential</span>
-                        <h3 class="text-xl font-bold">Riverside Homes</h3>
-                        <p class="text-slate-400 text-sm mt-1">Multi-unit development</p>
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Luxury</span>
+                        <h3 class="text-xl font-bold">Luxury Shingle Roof</h3>
+                        <p class="text-gray-400 text-sm mt-1">Architectural shingle installation</p>
                     </div>
                 </div>
 
+                <!-- Project 4: Stock Image -->
                 <div class="project-card h-80 lg:col-span-2 reveal" onclick="openProjectModal(3)">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=400&fit=crop" alt="Luxury Apartments">
+                    <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=800&h=400&fit=crop" alt="Commercial Flat Roof">
                     <div class="project-overlay"></div>
                     <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-amber-400 mb-2">Commercial</span>
-                        <h3 class="text-xl font-bold">Skyline Luxury Apartments</h3>
-                        <p class="text-slate-400 text-sm mt-1">High-rise residential tower with panoramic views</p>
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-gray-300 mb-2">Commercial</span>
+                        <h3 class="text-xl font-bold">Warehouse Flat Roof</h3>
+                        <p class="text-gray-400 text-sm mt-1">TPO membrane system installation</p>
                     </div>
                 </div>
 
+                <!-- Project 5: Stock Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(4)">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop" alt="Modern Renovation">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Residential Metal Roof">
                     <div class="project-overlay"></div>
                     <div class="project-content">
-                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-purple-400 mb-2">Renovation</span>
-                        <h3 class="text-xl font-bold">Heritage Restoration</h3>
-                        <p class="text-slate-400 text-sm mt-1">Historic building modernization</p>
+                        <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-2">Metal</span>
+                        <h3 class="text-xl font-bold">Standing Seam Metal</h3>
+                        <p class="text-gray-400 text-sm mt-1">Modern metal roof upgrade</p>
                     </div>
                 </div>
             </div>
@@ -1062,38 +1053,38 @@
     <section class="py-24 px-4 relative z-10" id="about">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Why Choose Us</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Built on Excellence</h2>
-                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-                    Our track record speaks for itself. Here's what sets Apex Construction apart.
+                <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Why Choose Us</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Reliability You Can Trust</h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    We take pride in our work and our reputation. Here is why homeowners choose Absolute Roofing Solutions.
                 </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.1s">
                     <div class="text-5xl font-bold glow-text mb-2">
-                        <span class="counter" data-target="500">0</span>+
+                        <span class="counter" data-target="850">0</span>+
                     </div>
-                    <p class="text-slate-400">Projects Completed</p>
+                    <p class="text-gray-400">Roofs Completed</p>
                 </div>
 
                 <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.2s">
                     <div class="text-5xl font-bold glow-text mb-2">
-                        <span class="counter" data-target="10">0</span>+
+                        <span class="counter" data-target="15">0</span>+
                     </div>
-                    <p class="text-slate-400">Years Experience</p>
+                    <p class="text-gray-400">Years Experience</p>
                 </div>
 
                 <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.3s">
                     <div class="text-5xl font-bold glow-text mb-2">
-                        <span class="counter" data-target="98">0</span>%
+                        <span class="counter" data-target="99">0</span>%
                     </div>
-                    <p class="text-slate-400">Satisfaction Rate</p>
+                    <p class="text-gray-400">Satisfaction Rate</p>
                 </div>
 
                 <div class="glass glass-glow p-8 text-center reveal" style="transition-delay: 0.4s">
                     <div class="text-5xl font-bold glow-text mb-2">24/7</div>
-                    <p class="text-slate-400">Customer Support</p>
+                    <p class="text-gray-400">Emergency Support</p>
                 </div>
             </div>
         </div>
@@ -1103,14 +1094,14 @@
     <section class="py-24 px-4 relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <span class="inline-block px-4 py-2 rounded-full glass text-amber-400 text-sm font-medium mb-4">Testimonials</span>
+                <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Testimonials</span>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
             </div>
 
             <div class="relative">
                 <div class="overflow-hidden">
                     <div class="testimonial-track flex gap-6" id="testimonialTrack">
-                        <!-- Testimonial Cards -->
+                        <!-- Testimonial 1 -->
                         <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
                             <div class="flex gap-1 mb-4">
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1119,16 +1110,17 @@
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="text-slate-300 mb-6">"Apex Construction exceeded all our expectations. Our dream home became a reality, and the process was seamless from start to finish."</p>
+                            <p class="text-gray-300 mb-6">"Dennis did a great work on our roof, quality work and fair price. I already referred him to my friends and family."</p>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center font-bold">JM</div>
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold">JS</div>
                                 <div>
-                                    <p class="font-bold">James Mitchell</p>
-                                    <p class="text-sm text-slate-400">Homeowner</p>
+                                    <p class="font-bold">Jennifer S.</p>
+                                    <p class="text-sm text-gray-400">Homeowner, Pearland</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Testimonial 2 -->
                         <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
                             <div class="flex gap-1 mb-4">
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1137,16 +1129,17 @@
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="text-slate-300 mb-6">"Professional, reliable, and incredibly skilled. Our office complex was completed ahead of schedule and under budget. Highly recommend!"</p>
+                            <p class="text-gray-300 mb-6">"I’ve known Dennis for years—back when he ran a car shop—and he has always been one of the kindest, most considerate people I’ve met. Now that he’s doing roofing work, I had the chance to call on him again, and I’m so glad I did."</p>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold">SC</div>
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 flex items-center justify-center font-bold">MR</div>
                                 <div>
-                                    <p class="font-bold">Sarah Chen</p>
-                                    <p class="text-sm text-slate-400">Business Owner</p>
+                                    <p class="font-bold">Mike R.</p>
+                                    <p class="text-sm text-gray-400">Business Owner</p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Testimonial 3 -->
                         <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
                             <div class="flex gap-1 mb-4">
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -1155,42 +1148,16 @@
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                                 <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                             </div>
-                            <p class="text-slate-300 mb-6">"The renovation of our heritage building was handled with utmost care. Apex preserved the character while adding modern amenities."</p>
+                            <p class="text-gray-300 mb-6">"Dennis and his crew are top notch. Very honest and up front, I highly recommend them for your roofing needs."</p>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center font-bold">RK</div>
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center font-bold">AT</div>
                                 <div>
-                                    <p class="font-bold">Robert Kim</p>
-                                    <p class="text-sm text-slate-400">Property Developer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
-                            <div class="flex gap-1 mb-4">
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="text-slate-300 mb-6">"From design to completion, Apex delivered exceptional quality. Their attention to detail and communication was outstanding."</p>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center font-bold">EW</div>
-                                <div>
-                                    <p class="font-bold">Emily Watson</p>
-                                    <p class="text-sm text-slate-400">Homeowner</p>
+                                    <p class="font-bold">Amanda T.</p>
+                                    <p class="text-sm text-gray-400">Homeowner, Friendswood</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Navigation Dots -->
-                <div class="flex justify-center gap-3 mt-8">
-                    <button class="testimonial-dot w-3 h-3 rounded-full bg-amber-500 transition-all" data-index="0"></button>
-                    <button class="testimonial-dot w-3 h-3 rounded-full bg-slate-600 hover:bg-slate-500 transition-all" data-index="1"></button>
-                    <button class="testimonial-dot w-3 h-3 rounded-full bg-slate-600 hover:bg-slate-500 transition-all" data-index="2"></button>
-                    <button class="testimonial-dot w-3 h-3 rounded-full bg-slate-600 hover:bg-slate-500 transition-all" data-index="3"></button>
                 </div>
             </div>
         </div>
@@ -1200,9 +1167,9 @@
     <section class="py-24 px-4 relative z-10" id="contact">
         <div class="max-w-4xl mx-auto">
             <div class="cta-gradient glass glass-glow p-12 md:p-16 text-center rounded-3xl reveal">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Start Your Project?</h2>
-                <p class="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                    Let's bring your vision to life. Get a free consultation and detailed quote from our expert team.
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready for a Safer, Stronger Roof?</h2>
+                <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                    Don't wait for the next storm. Get a free inspection and detailed estimate from our expert team today.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
                     <button class="btn-primary text-lg" onclick="openModal()">
@@ -1212,7 +1179,7 @@
                             <path d="m12 5 7 7-7 7"/>
                         </svg>
                     </button>
-                    <a href="tel:+1234567890" class="btn-secondary text-lg">
+                    <a href="tel:7135622172" class="btn-secondary text-lg">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                         </svg>
@@ -1224,65 +1191,58 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-4 border-t border-slate-800 relative z-10">
+    <footer class="py-12 px-4 border-t border-gray-800 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-900">
-                                <path d="M3 21h18"/>
-                                <path d="M5 21V7l8-4v18"/>
-                                <path d="M19 21V11l-6-4"/>
-                            </svg>
-                        </div>
-                        <span class="text-lg font-bold font-['Space_Grotesk']">Apex Construction</span>
+                        <img src="https://z-cdn-media.chatglm.cn/files/442cf0a9-f6e5-4e2b-beb0-79f8c553fbce.jpg?auth_key=1873079473-a5cdc5c4c2d4417b8c57ea79d7b3b114-0-33c7a7ab17ae49ef91a2965db507d26f" alt="Logo" class="h-12 w-auto rounded">
                     </div>
-                    <p class="text-slate-400 text-sm">Building the future with precision and excellence.</p>
+                    <p class="text-gray-400 text-sm">Protecting your home from the top down with quality materials and expert craftsmanship.</p>
                 </div>
 
                 <div>
-                    <h4 class="font-bold mb-4">Services</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Residential</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Commercial</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Renovations</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Custom Homes</a></li>
+                    <h4 class="font-bold mb-4">Service Areas</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>Pearland, TX</li>
+                        <li>Friendswood, TX</li>
+                        <li>Alvin, TX</li>
+                        <li>Manvel, TX</li>
+                        <li>Sugar Land, TX</li>
+                        <li>Missouri City, TX</li>
+                        <li>South Houston, TX</li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="font-bold mb-4">Company</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Our Team</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Careers</a></li>
-                        <li><a href="#" class="hover:text-amber-400 transition-colors">Contact</a></li>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#services" class="hover:text-red-400 transition-colors">Residential</a></li>
+                        <li><a href="#services" class="hover:text-red-400 transition-colors">Commercial</a></li>
+                        <li><a href="#services" class="hover:text-red-400 transition-colors">Repairs</a></li>
+                        <li><a href="#services" class="hover:text-red-400 transition-colors">Gutters</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm text-slate-400">
-                        <li>123 Construction Ave</li>
-                        <li>New York, NY 10001</li>
-                        <li>info@apexconstruction.com</li>
-                        <li>(555) 123-4567</li>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>16929 Harkey Rd</li>
+                        <li>Pearland, TX 77584</li>
+                        <li><a href="mailto:d.roof.mendoza@gmail.com" class="hover:text-red-400 transition-colors">d.roof.mendoza@gmail.com</a></li>
+                        <li><a href="tel:7135622172" class="hover:text-red-400 transition-colors">(713) 562-2172</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800">
-                <p class="text-sm text-slate-400">2024 Apex Construction. All rights reserved.</p>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
+                <p class="text-sm text-gray-400">2024 Absolute Roofing Solutions. All rights reserved.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-amber-500/20 transition-colors" aria-label="Facebook">
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Facebook">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-amber-500/20 transition-colors" aria-label="Instagram">
+                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-500/20 transition-colors" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                    </a>
-                    <a href="#" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-amber-500/20 transition-colors" aria-label="LinkedIn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     </a>
                 </div>
             </div>
@@ -1301,17 +1261,14 @@
             </button>
 
             <div class="text-center mb-8">
-                <h3 class="text-2xl md:text-3xl font-bold mb-2">Get Your Free Quote</h3>
-                <p class="text-slate-400">Fill out the form below and we'll get back to you within 24 hours.</p>
+                <h3 class="text-2xl md:text-3xl font-bold mb-2">Get Your Free Estimate</h3>
+                <p class="text-gray-400">Fill out the form below and we'll get back to you within 24 hours.</p>
             </div>
 
-            <!-- Formsubmit Integration -->
-            <form id="quoteForm" action="https://formsubmit.co/d19ea185a1eff1e524a6b11a82a46a26" method="POST" class="space-y-5">
-                <!-- Formsubmit Configuration -->
-                <input type="hidden" name="_subject" value="New Quote Request from Apex Construction Website">
+            <form id="quoteForm" action="https://formsubmit.co/d.roof.mendoza@gmail.com" method="POST" class="space-y-5">
+                <input type="hidden" name="_subject" value="New Quote Request from Website">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" value="https://construction2-0.netlify.app/">
 
                 <div>
                     <label class="form-label" for="name">Full Name</label>
@@ -1330,30 +1287,20 @@
                 </div>
 
                 <div>
-                    <label class="form-label" for="projectType">Project Type</label>
+                    <label class="form-label" for="projectType">Service Needed</label>
                     <select id="projectType" name="projectType" class="form-input" required>
-                        <option value="">Select project type...</option>
-                        <option value="Residential">Residential Construction</option>
-                        <option value="Commercial">Commercial Construction</option>
-                        <option value="Renovation">Renovation</option>
-                        <option value="Custom Home">Custom Home</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="form-label" for="budget">Budget Range</label>
-                    <select id="budget" name="budget" class="form-input" required>
-                        <option value="">Select budget range...</option>
-                        <option value="Under $10k">Under $10,000</option>
-                        <option value="$10k - $50k">$10,000 - $50,000</option>
-                        <option value="$50k - $200k">$50,000 - $200,000</option>
-                        <option value="$200k+">$200,000+</option>
+                        <option value="">Select service...</option>
+                        <option value="Roof Replacement">Roof Replacement</option>
+                        <option value="Roof Repair">Roof Repair</option>
+                        <option value="New Construction">New Construction</option>
+                        <option value="Gutters">Gutter Installation</option>
+                        <option value="Inspection">Roof Inspection</option>
                     </select>
                 </div>
 
                 <div>
                     <label class="form-label" for="description">Project Description</label>
-                    <textarea id="description" name="description" rows="4" class="form-input resize-none" placeholder="Tell us about your project..." required></textarea>
+                    <textarea id="description" name="description" rows="4" class="form-input resize-none" placeholder="Tell us about your roofing needs..." required></textarea>
                 </div>
 
                 <button type="submit" class="btn-primary w-full justify-center text-lg py-4" id="submitBtn">
@@ -1361,16 +1308,6 @@
                     <span id="submitSpinner" class="spinner hidden"></span>
                 </button>
             </form>
-
-            <div id="successMessage" class="hidden text-center py-8">
-                <div class="w-20 h-20 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"/>
-                    </svg>
-                </div>
-                <h4 class="text-2xl font-bold mb-2">Request Submitted!</h4>
-                <p class="text-slate-400">We'll contact you within 24 hours with your personalized quote.</p>
-            </div>
         </div>
     </div>
 
@@ -1392,69 +1329,39 @@
         // Project Data
         const projects = [
             {
-                title: "Modern Villa",
+                title: "Pearland Home Renovation",
                 type: "Residential",
-                image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&h=600&fit=crop",
-                description: "A stunning contemporary villa featuring floor-to-ceiling windows, open floor plans, and sustainable building materials. This luxury waterfront property spans 6,500 sq ft with panoramic ocean views.",
-                stats: { area: "6,500 sq ft", completion: "2023", budget: "$2.8M" },
-                timeline: [
-                    { phase: "Planning", duration: "2 months" },
-                    { phase: "Foundation", duration: "3 months" },
-                    { phase: "Construction", duration: "8 months" },
-                    { phase: "Finishing", duration: "3 months" }
-                ]
+                image: "https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16",
+                description: "Complete tear-off and replacement of an aging roof with high-quality architectural shingles. Features improved ventilation and ice & water shield protection.",
+                stats: { area: "3,200 sq ft", completion: "2023", budget: "$18.5k" },
             },
             {
-                title: "Downtown Office Complex",
-                type: "Commercial",
-                image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=600&fit=crop",
-                description: "A 12-story corporate headquarters designed for modern businesses. Features include smart building technology, energy-efficient systems, and flexible office spaces.",
-                stats: { area: "85,000 sq ft", completion: "2024", budget: "$12M" },
-                timeline: [
-                    { phase: "Planning", duration: "4 months" },
-                    { phase: "Foundation", duration: "6 months" },
-                    { phase: "Construction", duration: "14 months" },
-                    { phase: "Finishing", duration: "4 months" }
-                ]
-            },
-            {
-                title: "Riverside Homes",
+                title: "Traditional Brick Home",
                 type: "Residential",
-                image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=600&fit=crop",
-                description: "A multi-unit residential development featuring 24 luxury townhomes along the riverfront. Each unit includes private garages, rooftop terraces, and smart home integration.",
-                stats: { area: "48,000 sq ft", completion: "2024", budget: "$8.5M" },
-                timeline: [
-                    { phase: "Planning", duration: "3 months" },
-                    { phase: "Foundation", duration: "4 months" },
-                    { phase: "Construction", duration: "10 months" },
-                    { phase: "Finishing", duration: "3 months" }
-                ]
+                image: "https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36",
+                description: "Roof maintenance and repair for a traditional style brick home. Included flashing repair and gutter cleaning to ensure longevity.",
+                stats: { area: "2,100 sq ft", completion: "2024", budget: "$4.5k" },
             },
             {
-                title: "Skyline Luxury Apartments",
+                title: "Luxury Shingle Roof",
+                type: "Luxury Residential",
+                image: "https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&h=600&fit=crop",
+                description: "Premium architectural shingle installation on a modern luxury home. Focused on aesthetics and durability.",
+                stats: { area: "4,500 sq ft", completion: "2023", budget: "$25k" },
+            },
+            {
+                title: "Warehouse Flat Roof",
                 type: "Commercial",
-                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=600&fit=crop",
-                description: "A 22-story high-rise residential tower featuring 180 luxury apartments with panoramic city views. Amenities include a rooftop pool, fitness center, and concierge services.",
-                stats: { area: "220,000 sq ft", completion: "2025", budget: "$35M" },
-                timeline: [
-                    { phase: "Planning", duration: "6 months" },
-                    { phase: "Foundation", duration: "8 months" },
-                    { phase: "Construction", duration: "20 months" },
-                    { phase: "Finishing", duration: "6 months" }
-                ]
+                image: "https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=1200&h=600&fit=crop",
+                description: "Installation of a durable TPO membrane system on a 20,000 sq ft warehouse.",
+                stats: { area: "20,000 sq ft", completion: "2023", budget: "$85k" },
             },
             {
-                title: "Heritage Restoration",
-                type: "Renovation",
-                image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=600&fit=crop",
-                description: "Complete restoration of a 1920s heritage building, preserving historical architectural elements while modernizing interiors with contemporary amenities and sustainable systems.",
-                stats: { area: "15,000 sq ft", completion: "2023", budget: "$4.2M" },
-                timeline: [
-                    { phase: "Assessment", duration: "2 months" },
-                    { phase: "Restoration", duration: "8 months" },
-                    { phase: "Modernization", duration: "4 months" },
-                    { phase: "Finishing", duration: "2 months" }
-                ]
+                title: "Standing Seam Metal",
+                type: "Metal Roofing",
+                image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=600&fit=crop",
+                description: "Premium standing seam metal roof installation for a modern home. Chosen for its longevity and weather resistance.",
+                stats: { area: "3,800 sq ft", completion: "2024", budget: "$38k" },
             }
         ];
 
@@ -1470,41 +1377,23 @@
             initTiltCards();
             initMobileMenu();
             initFormSubmission();
-            checkForSuccessMessage();
         });
-
-        // Check for success message on page load (returning from Formsubmit redirect)
-        function checkForSuccessMessage() {
-            if (sessionStorage.getItem('formSubmitted') === 'true') {
-                sessionStorage.removeItem('formSubmitted');
-                // We can show a toast or alert since the modal state is lost on redirect
-                setTimeout(() => {
-                    alert('Thank you! Your request has been submitted successfully.');
-                }, 500);
-            }
-        }
 
         // Particle System
         function initParticles() {
             const canvas = document.getElementById('particles');
             const ctx = canvas.getContext('2d');
-            
             let particles = [];
-            let animationId = null;
             
             function resize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             }
-            
             resize();
             window.addEventListener('resize', resize);
             
             class Particle {
-                constructor() {
-                    this.reset();
-                }
-                
+                constructor() { this.reset(); }
                 reset() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
@@ -1513,218 +1402,123 @@
                     this.speedY = (Math.random() - 0.5) * 0.3;
                     this.opacity = Math.random() * 0.5 + 0.1;
                 }
-                
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
-                    
-                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                        this.reset();
-                    }
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
                 }
-                
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, Math.max(0.1, this.size), 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(245, 158, 11, ${this.opacity})`;
+                    ctx.fillStyle = `rgba(220, 38, 38, ${this.opacity})`;
                     ctx.fill();
                 }
             }
             
-            for (let i = 0; i < 60; i++) {
-                particles.push(new Particle());
-            }
-            
+            for (let i = 0; i < 60; i++) particles.push(new Particle());
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
-                particles.forEach(particle => {
-                    particle.update();
-                    particle.draw();
-                });
-                
-                animationId = requestAnimationFrame(animate);
+                particles.forEach(p => { p.update(); p.draw(); });
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(animate);
             }
-            
-            // Respect reduced motion
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                animate();
-            }
+            animate();
         }
 
-        // Scroll Progress
         function initScrollProgress() {
             const progressBar = document.getElementById('scrollProgress');
-            
             window.addEventListener('scroll', () => {
-                const scrollTop = window.scrollY;
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const progress = scrollTop / docHeight;
-                progressBar.style.transform = `scaleX(${progress})`;
+                progressBar.style.transform = `scaleX(${window.scrollY / docHeight})`;
             });
         }
 
-        // Navbar
         function initNavbar() {
             const navbar = document.getElementById('navbar');
-            
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
             });
         }
 
-        // Reveal Animations
         function initRevealAnimations() {
             const reveals = document.querySelectorAll('.reveal');
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('active');
                 });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-            
+            }, { threshold: 0.1 });
             reveals.forEach(el => observer.observe(el));
         }
 
-        // Counter Animation
         function initCounters() {
             const counters = document.querySelectorAll('.counter');
-            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const counter = entry.target;
                         const target = parseInt(counter.dataset.target);
-                        const duration = 2000;
-                        const start = performance.now();
-                        
-                        function updateCounter(currentTime) {
-                            const elapsed = currentTime - start;
-                            const progress = Math.min(elapsed / duration, 1);
-                            const easeOut = 1 - Math.pow(1 - progress, 3);
-                            const current = Math.floor(easeOut * target);
-                            
-                            counter.textContent = current;
-                            
-                            if (progress < 1) {
+                        let start = 0;
+                        const increment = target / 100;
+                        const updateCounter = () => {
+                            if (start < target) {
+                                start += increment;
+                                counter.textContent = Math.ceil(start);
                                 requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.textContent = target;
-                            }
-                        }
-                        
-                        requestAnimationFrame(updateCounter);
+                            } else counter.textContent = target;
+                        };
+                        updateCounter();
                         observer.unobserve(counter);
                     }
                 });
             }, { threshold: 0.5 });
-            
-            counters.forEach(counter => observer.observe(counter));
+            counters.forEach(c => observer.observe(c));
         }
 
-        // Progress Bars
         function initProgressBars() {
-            const progressBars = document.querySelectorAll('.progress-fill');
-            
+            const bars = document.querySelectorAll('.progress-fill');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const bar = entry.target;
-                        const width = bar.dataset.width;
                         setTimeout(() => {
-                            bar.style.width = width + '%';
+                            entry.target.style.width = entry.target.dataset.width + '%';
                         }, 300);
-                        observer.unobserve(bar);
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.5 });
-            
-            progressBars.forEach(bar => observer.observe(bar));
+            bars.forEach(b => observer.observe(b));
         }
 
-        // Testimonials
         function initTestimonials() {
             const track = document.getElementById('testimonialTrack');
             const dots = document.querySelectorAll('.testimonial-dot');
             let currentIndex = 0;
-            const cardWidth = 424; // min-width + gap
-            let autoplayInterval = null;
-            
-            function goToSlide(index) {
-                currentIndex = index;
-                track.style.transform = `translateX(-${index * cardWidth}px)`;
-                
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('bg-amber-500', i === index);
-                    dot.classList.toggle('bg-slate-600', i !== index);
-                });
-            }
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => goToSlide(index));
-            });
-            
-            function startAutoplay() {
-                autoplayInterval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % dots.length;
-                    goToSlide(currentIndex);
-                }, 5000);
-            }
-            
-            function stopAutoplay() {
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                }
-            }
-            
-            // Start autoplay if not reduced motion
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                startAutoplay();
-            }
-            
-            // Pause on hover
-            track.addEventListener('mouseenter', stopAutoplay);
-            track.addEventListener('mouseleave', startAutoplay);
+            const cardWidth = 424; 
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % 3; 
+                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }, 5000);
         }
 
-        // Tilt Cards
         function initTiltCards() {
-            const tiltCards = document.querySelectorAll('.tilt-card');
-            
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-            
-            tiltCards.forEach(card => {
+            document.querySelectorAll('.tilt-card').forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
                     const rotateX = (y - centerY) / 20;
                     const rotateY = (centerX - x) / 20;
-                    
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
                 });
-                
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = '';
-                });
+                card.addEventListener('mouseleave', () => { card.style.transform = ''; });
             });
         }
 
-        // Mobile Menu
         function initMobileMenu() {
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
-            
             hamburger.addEventListener('click', () => {
                 hamburger.classList.toggle('active');
                 mobileMenu.classList.toggle('active');
@@ -1733,14 +1527,11 @@
         }
         
         function closeMobileMenu() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('mobileMenu').classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        // Quote Modal
         function openModal() {
             document.getElementById('quoteModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1751,7 +1542,6 @@
             document.body.style.overflow = '';
         }
 
-        // Project Modal
         function openProjectModal(index) {
             const project = projects[index];
             const modal = document.getElementById('projectModal');
@@ -1760,39 +1550,25 @@
             content.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" class="w-full h-64 object-cover">
                 <div class="p-8">
-                    <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-amber-400 mb-4">${project.type}</span>
+                    <span class="inline-block px-3 py-1 rounded-full glass text-xs font-medium text-red-400 mb-4">${project.type}</span>
                     <h3 class="text-3xl font-bold mb-4">${project.title}</h3>
-                    <p class="text-slate-400 mb-8">${project.description}</p>
-                    
-                    <div class="grid grid-cols-3 gap-4 mb-8">
+                    <p class="text-gray-400 mb-8">${project.description}</p>
+                    <div class="grid grid-cols-3 gap-4">
                         <div class="glass p-4 rounded-xl text-center">
                             <p class="text-2xl font-bold glow-text">${project.stats.area}</p>
-                            <p class="text-xs text-slate-400 mt-1">Total Area</p>
+                            <p class="text-xs text-gray-400 mt-1">Total Area</p>
                         </div>
                         <div class="glass p-4 rounded-xl text-center">
                             <p class="text-2xl font-bold glow-text">${project.stats.completion}</p>
-                            <p class="text-xs text-slate-400 mt-1">Completion</p>
-                            <p class="text-xs text-slate-400 mt-1">Completion</p>
+                            <p class="text-xs text-gray-400 mt-1">Completion</p>
                         </div>
                         <div class="glass p-4 rounded-xl text-center">
                             <p class="text-2xl font-bold glow-text">${project.stats.budget}</p>
-                            <p class="text-xs text-slate-400 mt-1">Budget</p>
+                            <p class="text-xs text-gray-400 mt-1">Budget</p>
                         </div>
-                    </div>
-                    
-                    <h4 class="font-bold mb-4">Project Timeline</h4>
-                    <div class="grid grid-cols-4 gap-2">
-                        ${project.timeline.map((item, i) => `
-                            <div class="glass p-4 rounded-xl text-center">
-                                <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-2 text-amber-400 font-bold text-sm">${i + 1}</div>
-                                <p class="font-medium text-sm">${item.phase}</p>
-                                <p class="text-xs text-slate-400">${item.duration}</p>
-                            </div>
-                        `).join('')}
                     </div>
                 </div>
             `;
-            
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1802,25 +1578,15 @@
             document.body.style.overflow = '';
         }
 
-        // Form Submission Logic
         function initFormSubmission() {
             const form = document.getElementById('quoteForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const submitSpinner = document.getElementById('submitSpinner');
-            
             form.addEventListener('submit', () => {
-                // Set flag for success message on return
-                sessionStorage.setItem('formSubmitted', 'true');
-
-                // Show loading state immediately
-                submitText.classList.add('hidden');
-                submitSpinner.classList.remove('hidden');
-                submitBtn.disabled = true;
+                document.getElementById('submitText').classList.add('hidden');
+                document.getElementById('submitSpinner').classList.remove('hidden');
+                document.getElementById('submitBtn').disabled = true;
             });
         }
 
-        // Close modals on escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
@@ -1829,14 +1595,11 @@
             }
         });
 
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
