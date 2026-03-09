@@ -422,12 +422,6 @@
             transform: translateY(0);
         }
 
-        /* Testimonial Slider */
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
         /* Scroll Progress */
         .scroll-progress {
             position: fixed;
@@ -694,9 +688,9 @@
             50% { background-position: 100% 50%; }
         }
         
-        /* Logo styling */
+        /* Logo styling - Updated Size */
         .brand-logo {
-            height: 50px;
+            height: 65px; /* Increased size */
             width: auto;
             object-fit: contain;
         }
@@ -717,9 +711,8 @@
     <nav class="navbar" id="navbar">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
             <a href="#" class="flex items-center gap-3">
-                <!-- Updated Logo Image -->
-                <img src="https://z-cdn-media.chatglm.cn/files/442cf0a9-f6e5-4e2b-beb0-79f8c553fbce.jpg?auth_key=1873079473-a5cdc5c4c2d4417b8c57ea79d7b3b114-0-33c7a7ab17ae49ef91a2965db507d26f" alt="Absolute Roofing Solutions Logo" class="brand-logo rounded-lg">
-                <span class="text-xl font-bold font-['Space_Grotesk'] hidden md:block">Absolute Roofing Solutions</span>
+                <!-- Updated Logo Source -->
+                <img src="https://z-cdn-media.chatglm.cn/files/141936ea-1dc8-46aa-852f-4cab86dca500.png?auth_key=1873085020-819d74fd5011473a8bea94b2c8b17619-0-1cbfe888443f144b3789e5fb79dc11d5" alt="Absolute Roofing Solutions Logo" class="brand-logo rounded-lg">
             </a>
 
             <div class="nav-links hidden md:flex items-center gap-8">
@@ -826,7 +819,7 @@
 
                 <!-- Floating Stats Cards -->
                 <div class="hero-stats relative lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 flex flex-col gap-4">
-                    <!-- Card 1: Project Complete -->
+                    <!-- Card 1 -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
                         <div class="flex items-center justify-between mb-4">
                             <span class="text-sm text-gray-400 uppercase tracking-wider">Project Complete</span>
@@ -839,7 +832,7 @@
                         <span class="text-sm text-gray-400">Completed on schedule</span>
                     </div>
 
-                    <!-- Card 2: Client Satisfaction -->
+                    <!-- Card 2 -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
                         <div class="text-center">
                             <span class="text-6xl font-bold glow-text counter" data-target="99">0</span>
@@ -855,7 +848,7 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: Active Projects -->
+                    <!-- Card 3 -->
                     <div class="stat-card float-card tilt-card glass glass-glow p-6 w-full lg:w-80" data-tilt>
                         <div class="flex items-center gap-2 mb-4">
                             <div class="live-dot"></div>
@@ -899,7 +892,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service Cards -->
                 <div class="service-card glass glass-glow p-8 reveal" style="transition-delay: 0.1s">
                     <div class="service-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -916,15 +908,7 @@
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
                             <path d="M9 22v-4h6v4"/>
-                            <path d="M8 6h.01"/>
-                            <path d="M16 6h.01"/>
-                            <path d="M12 6h.01"/>
-                            <path d="M12 10h.01"/>
-                            <path d="M12 14h.01"/>
-                            <path d="M16 10h.01"/>
-                            <path d="M16 14h.01"/>
-                            <path d="M8 10h.01"/>
-                            <path d="M8 14h.01"/>
+                            <path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>
                         </svg>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Commercial Roofing</h3>
@@ -991,7 +975,6 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Project 1: User Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(0)">
                     <img src="https://z-cdn-media.chatglm.cn/files/553d19ec-7f4f-41bd-82b8-626b073ee754.png?auth_key=1873079473-e3393c903608402ebc29f0ccb61ca664-0-664b9969cba9fcfb540ba91fe3911f16" alt="Residential Roofing Pearland">
                     <div class="project-overlay"></div>
@@ -1002,7 +985,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2: User Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(1)">
                     <img src="https://z-cdn-media.chatglm.cn/files/77bc99bd-d6e0-4906-91ec-0a7aed009fba.png?auth_key=1873079473-1c57c402a2654cccbdda56f180d5ff97-0-7c6a7e527404bd5a3beb838c1e44ec36" alt="Brick House Roofing">
                     <div class="project-overlay"></div>
@@ -1013,7 +995,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Stock Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(2)">
                     <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?w=600&h=400&fit=crop" alt="Modern Villa Roof">
                     <div class="project-overlay"></div>
@@ -1024,7 +1005,6 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Stock Image -->
                 <div class="project-card h-80 lg:col-span-2 reveal" onclick="openProjectModal(3)">
                     <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?w=800&h=400&fit=crop" alt="Commercial Flat Roof">
                     <div class="project-overlay"></div>
@@ -1035,7 +1015,6 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Stock Image -->
                 <div class="project-card h-80 reveal" onclick="openProjectModal(4)">
                     <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Residential Metal Roof">
                     <div class="project-overlay"></div>
@@ -1090,72 +1069,69 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 px-4 relative z-10 overflow-hidden">
+    <!-- Testimonials - Converted to Static Grid -->
+    <section class="py-24 px-4 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="inline-block px-4 py-2 rounded-full glass text-red-400 text-sm font-medium mb-4">Testimonials</span>
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">What Our Clients Say</h2>
             </div>
 
-            <div class="relative">
-                <div class="overflow-hidden">
-                    <div class="testimonial-track flex gap-6" id="testimonialTrack">
-                        <!-- Testimonial 1 -->
-                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
-                            <div class="flex gap-1 mb-4">
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="text-gray-300 mb-6">"Dennis did a great work on our roof, quality work and fair price. I already referred him to my friends and family."</p>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold">JS</div>
-                                <div>
-                                    <p class="font-bold">Jennifer S.</p>
-                                    <p class="text-sm text-gray-400">Homeowner, Pearland</p>
-                                </div>
-                            </div>
+            <!-- Static Grid Layout -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.1s">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="text-gray-300 mb-6 flex-grow">"Dennis did a great work on our roof, quality work and fair price. I already referred him to my friends and family."</p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center font-bold flex-shrink-0">JS</div>
+                        <div>
+                            <p class="font-bold">Jennifer S.</p>
+                            <p class="text-sm text-gray-400">Homeowner, Pearland</p>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Testimonial 2 -->
-                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
-                            <div class="flex gap-1 mb-4">
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="text-gray-300 mb-6">"I’ve known Dennis for years—back when he ran a car shop—and he has always been one of the kindest, most considerate people I’ve met. Now that he’s doing roofing work, I had the chance to call on him again, and I’m so glad I did."</p>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 flex items-center justify-center font-bold">MR</div>
-                                <div>
-                                    <p class="font-bold">Mike R.</p>
-                                    <p class="text-sm text-gray-400">Business Owner</p>
-                                </div>
-                            </div>
+                <!-- Testimonial 2 -->
+                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.2s">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="text-gray-300 mb-6 flex-grow">"I’ve known Dennis for years—back when he ran a car shop—and he has always been one of the kindest, most considerate people I’ve met. Now that he’s doing roofing work, I had the chance to call on him again, and I’m so glad I did."</p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-500 to-gray-700 flex items-center justify-center font-bold flex-shrink-0">MR</div>
+                        <div>
+                            <p class="font-bold">Mike R.</p>
+                            <p class="text-sm text-gray-400">Business Owner</p>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Testimonial 3 -->
-                        <div class="glass glass-glow p-8 min-w-[350px] md:min-w-[400px] flex-shrink-0">
-                            <div class="flex gap-1 mb-4">
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                                <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                            </div>
-                            <p class="text-gray-300 mb-6">"Dennis and his crew are top notch. Very honest and up front, I highly recommend them for your roofing needs."</p>
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center font-bold">AT</div>
-                                <div>
-                                    <p class="font-bold">Amanda T.</p>
-                                    <p class="text-sm text-gray-400">Homeowner, Friendswood</p>
-                                </div>
-                            </div>
+                <!-- Testimonial 3 -->
+                <div class="glass glass-glow p-8 flex flex-col reveal" style="transition-delay: 0.3s">
+                    <div class="flex gap-1 mb-4">
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                    <p class="text-gray-300 mb-6 flex-grow">"Dennis and his crew are top notch. Very honest and up front, I highly recommend them for your roofing needs."</p>
+                    <div class="flex items-center gap-4 mt-auto">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center font-bold flex-shrink-0">AT</div>
+                        <div>
+                            <p class="font-bold">Amanda T.</p>
+                            <p class="text-sm text-gray-400">Homeowner, Friendswood</p>
                         </div>
                     </div>
                 </div>
@@ -1195,8 +1171,9 @@
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-8 mb-12">
                 <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://z-cdn-media.chatglm.cn/files/442cf0a9-f6e5-4e2b-beb0-79f8c553fbce.jpg?auth_key=1873079473-a5cdc5c4c2d4417b8c57ea79d7b3b114-0-33c7a7ab17ae49ef91a2965db507d26f" alt="Logo" class="h-12 w-auto rounded">
+                    <!-- Updated Footer Logo (Big) -->
+                    <div class="mb-6">
+                        <img src="https://z-cdn-media.chatglm.cn/files/141936ea-1dc8-46aa-852f-4cab86dca500.png?auth_key=1873085020-819d74fd5011473a8bea94b2c8b17619-0-1cbfe888443f144b3789e5fb79dc11d5" alt="Absolute Roofing Solutions" class="h-24 w-auto rounded-lg">
                     </div>
                     <p class="text-gray-400 text-sm">Protecting your home from the top down with quality materials and expert craftsmanship.</p>
                 </div>
@@ -1373,7 +1350,6 @@
             initRevealAnimations();
             initCounters();
             initProgressBars();
-            initTestimonials();
             initTiltCards();
             initMobileMenu();
             initFormSubmission();
@@ -1486,17 +1462,6 @@
                 });
             }, { threshold: 0.5 });
             bars.forEach(b => observer.observe(b));
-        }
-
-        function initTestimonials() {
-            const track = document.getElementById('testimonialTrack');
-            const dots = document.querySelectorAll('.testimonial-dot');
-            let currentIndex = 0;
-            const cardWidth = 424; 
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % 3; 
-                track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-            }, 5000);
         }
 
         function initTiltCards() {
