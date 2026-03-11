@@ -1,0 +1,24 @@
+Copyright (c) 2026 Oliver Hazos
+All Rights Reserved.
+
+This repository, including but not limited to all HTML, CSS, JavaScript, source code, design elements, layouts, user interface structures, animations, graphics, and associated assets (collectively referred to as the "Software"), is the exclusive intellectual property of Oliver Hazos and is protected by United States and international copyright laws.
+
+No person or entity is granted permission to copy, reproduce, modify, merge, publish, distribute, sublicense, sell, lease, license, publicly display, publicly perform, create derivative works from, reverse engineer, decompile, replicate, clone, or otherwise exploit the Software, in whole or in part, without the explicit prior written consent of the copyright holder.
+
+This prohibition includes, but is not limited to:
+
+* Replicating or cloning the website design, structure, or functionality
+* Reusing any HTML, CSS, or JavaScript code
+* Using the design or layout as a template for commercial or personal projects
+* Extracting assets, animations, styles, or components
+* Training artificial intelligence systems or machine learning models using this Software
+* Redistributing the Software in any form
+
+Any unauthorized use, reproduction, distribution, or derivative work based on this Software will constitute copyright infringement and may result in civil liability, statutory damages, injunctive relief, and criminal penalties to the maximum extent permitted by law.
+
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+The copyright holder reserves all rights not expressly granted herein.
+
+For licensing or usage inquiries, contact:
+Oliver Hazos
